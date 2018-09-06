@@ -1,0 +1,10 @@
+{% load i18n %}
+{% trans "Ativação de conta em: " %} {{ site.domain }}:
+
+Olá!
+
+Clique no link abaixo para ativar a sua conta no portal FoF.
+
+http://127.0.0.1:8000{% url 'registration_activate' activation_key %}
+
+{% blocktrans %}Este link é válido por {{ expiration_days }} dias.{% endblocktrans %}
