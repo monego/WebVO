@@ -6,9 +6,11 @@ from . import regbackend
 from . import views
 from django.views.generic.base import TemplateView
 import fof
+import resulttable
 
 urlpatterns = [
     path('', include('fof.urls')),
+    path('', include('resulttable.urls')),
 
     path('admin/', admin.site.urls),
 
