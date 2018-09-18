@@ -16,8 +16,6 @@
             <li><a href="{% url 'contact' %}">Contato</a></li>
             {% if request.user.is_authenticated %}
             <li><a href="{% url 'fof' %}">FoF</a></li>
-            <li><a href="{% url 'img' %}">Imagens</a></li>
-            <li><a href="{% url 'exp' %}">Experimentos</a></li>
             {%endif%}
           </ul>
 

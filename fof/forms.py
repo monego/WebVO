@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django import forms
 from registration.forms import RegistrationFormUniqueEmail
 from .models import Algorithms
@@ -29,28 +28,3 @@ class ExecutionForm(forms.Form):
     )
     Input = forms.FileField(required=False, validators=[file_size])
     Rperc = forms.FloatField(required=False)
-
-class FoFForm(forms.Form):
-    Algorithm = forms.ModelChoiceField(
-        queryset=Algorithms.objects.all(),
-        empty_label="---Selecione um algoritmo---",
-        required=True,
-        to_field_name="nameAlg",
-    )
-    Input = forms.FileField(required=False, validators=[file_size])
-    Rperc = forms.FloatField(required=False)
-
-class imgForm(forms.Form):
-    Algorithm = forms.ModelChoiceField(
-        queryset=Algorithms.objects.all(),
-        empty_label="---Selecione um algoritmo---",
-        required=True,
-        to_field_name="nameAlg",
-    )
-    Input = forms.FileField(required=False, validators=[file_size])
-    Rperc = forms.FloatField(required=False)
-
-class ContactForm(forms.Form):
-    nome = forms.CharField()
-    email = forms.EmailField()
-    mensagem = forms.CharField()

@@ -1,6 +1,7 @@
 from .models import UsuarioFriends, Execution
 from celery.utils.log import get_task_logger
-from celery.decorators import task
+# from celery.decorators import task
+from webfriends.celery import app
 import requests
 import os
 import time
@@ -8,7 +9,7 @@ import time
 logger = get_task_logger(__name__)
 
 
-@task(name="RunExperiment")
+@app.task(name="RunExperiment")
 def RunExperiment(execution, ide):
 
     server_url = 'http://127.0.0.1:8000'

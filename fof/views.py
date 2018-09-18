@@ -4,8 +4,8 @@ from django.template import RequestContext
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-from experiment.forms import ExecutionForm, ContactForm
-from experiment.models import Execution, Algorithms, UsuarioFriends
+from fof.forms import ExecutionForm
+from fof.models import Execution, Algorithms, UsuarioFriends
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.urls import reverse
@@ -14,7 +14,7 @@ from jsonview.decorators import json_view
 from crispy_forms.utils import render_crispy_form
 from crispy_forms.helper import FormHelper
 from .paginator import paginate
-from experiment.tasks import RunExperiment
+from fof.tasks import RunExperiment
 
 
 def home(request):
@@ -62,10 +62,6 @@ def home(request):
         return render(request, "home.html", context)
 
 
-def about(request):
-    return render(request, "about.html", {})
-
-
 def downloadInputFile(request):
     expId = request.GET.get('id')
     execution = Execution.objects.get(pk=expId)
@@ -93,27 +89,6 @@ def downloadOutputFile(request):
     # criar alerta
     return HttpResponseRedirect(reverse('home'))
 
-
-def contact(request):
-    form = ContactForm(request.POST or None)
-    if form.is_valid():
-        subject = 'Portal Friends - Mensagem de %s ' % (
-            form.cleaned_data.get("nome"))
-        from_email = settings.EMAIL_HOST_USER  # da pra usar outro?
-        to_email = from_email
-        message = form.cleaned_data.get("mensagem")
-        send_mail(subject,
-                  message,
-                  from_email,
-                  [to_email],
-                  fail_silently=False)
-    context = {
-        "form": form,
-    }
-    return render(request, "home.html", context)
-# ajax
-
-
 @json_view
 @csrf_protect
 def checkForm(request):
@@ -136,134 +111,10 @@ def checkForm(request):
 
 
 @csrf_protect
-def experiments(request):
-
-    if request.method != 'POST':
-        # form = ExecutionForm(request.POST, request.FILES or None)
-
-        # if not form.is_valid():
-        #     title = "Experiments %s" % (request.user)
-        #     # form_html = render_crispy_form(form)
-        #     context = {
-        #         "form": form,
-        #         'title': title
-        #     }
-
-        #     return render(request, "experiments.html", context)
-
-        # algorithm = request.POST.get('Algorithm')
-        # d_User = User.objects.get(username=request.user)
-        # alg = Algorithms.objects.get(nameAlg=algorithm)
-        # execution = Execution(
-        #     request_by=d_User.usuariofriends,
-        #     algorithm=alg,
-        # )
-
-        # execution.rperc = request.POST["Rperc"]
-        # execution.save()
-
-        # if (request.FILES):
-        #     # print(request.FILES)
-        #     fileIn = request.FILES["Input"]
-        #     execution.inputFile = fileIn
-        #     execution.save()
-        #     queryInputFile = (
-        #         settings.MEDIA_ROOT +
-        #         execution.inputFile.name.replace('./', '/')
-        #     ).replace(' ', '\ ')
-        #     queryOutputFile = queryInputFile
-        #     queryOutputFile = queryOutputFile.replace('input', 'output')
-        #     query = alg.command + ' ' + queryInputFile + ' ' + execution.rperc + ' > ' + queryOutputFile
-
-        # else:
-        #     query = execution.algorithm.command
-
-        # outputFilePath = './users/user_' + \
-        #     str(execution.request_by.usuario.id) + \
-        #     '/' + str(execution.id) + '/output'
-
-        # teste = RunExperiment.delay(query, execution.id)
-        # execution.save()
-        title = "Experiments %s" % (request.user)
-
-        return HttpResponseRedirect(reverse('home'))
-
-    form = ExecutionForm(request.POST or None)
-    title = "Experiments %s" % (request.user)
-    context = {
-        "title": title,
-        "form": form
-    }
-
-    return render(request, "experiments.html", context)
-
-@csrf_protect
 def fof(request):
 
-    if request.method == 'POST':
-        form = FoFForm(request.POST, request.FILES or None)
-
-        if not form.is_valid():
-            title = "Experiments %s" % (request.user)
-            # form_html = render_crispy_form(form)
-            context = {
-                "form": form,
-                'title': title
-            }
-
-            return render(request, "experiments.html", context)
-
-        algorithm = request.POST.get('Algorithm')
-        d_User = User.objects.get(username=request.user)
-        alg = Algorithms.objects.get(nameAlg=algorithm)
-        execution = Execution(
-            request_by=d_User.usuariofriends,
-            algorithm=alg,
-        )
-
-        execution.rperc = request.POST["Rperc"]
-        execution.save()
-
-        if (request.FILES):
-            # print(request.FILES)
-            fileIn = request.FILES["Input"]
-            execution.inputFile = fileIn
-            execution.save()
-            queryInputFile = (
-                settings.MEDIA_ROOT +
-                execution.inputFile.name.replace('./', '/')
-            ).replace(' ', '\ ')
-            queryOutputFile = queryInputFile
-            queryOutputFile = queryOutputFile.replace('input', 'output')
-            query = alg.command + ' ' + queryInputFile + ' ' + execution.rperc + ' > ' + queryOutputFile
-
-        else:
-            query = execution.algorithm.command
-
-        outputFilePath = './users/user_' + \
-            str(execution.request_by.usuario.id) + \
-            '/' + str(execution.id) + '/output'
-
-        teste = RunExperiment.delay(query, execution.id)
-        execution.save()
-        title = "Experiments %s" % (request.user)
-
-        return HttpResponseRedirect(reverse('home'))
-
-    form = ExecutionForm(request.POST or None)
-    title = "Experiments %s" % (request.user)
-    context = {
-        "title": title,
-        "form": form
-    }
-
-    return render(request, "experiments.html", context)
-
-@csrf_protect
-def img(request):
-
-    if request.method == 'POST':
-        form = FoFForm(request.POST, request.FILES or None)
+    if request.method != 'POST':
+        form = ExecutionForm(request.POST, request.FILES or None)
 
         if not form.is_valid():
             title = "Experiments %s" % (request.user)
