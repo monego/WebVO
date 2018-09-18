@@ -2,6 +2,8 @@
 # Django starts so that shared_task will use this app.
 from .celery import app as celery_app
 
+default_app_config = 'webfriends.apps.WebFriendsConfig'
+
 __all__ = ('celery_app',)
 # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
 # app = Celery('proj')

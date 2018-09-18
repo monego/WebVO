@@ -3,6 +3,6 @@
 from django.apps import AppConfig
 
 
-class ResultConfig(AppConfig):
-    name = 'resulttable'
-    verbose_name = 'Tabela dos Resultados'
+class FoFConfig(AppConfig):
+    name = 'fof'
+    verbose_name = "Algoritmo Friends of Friends"

@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'registration',
     'crispy_forms',
     'fof',
+    'image',
+    'resulttable',
     'webfriends',
 )
 

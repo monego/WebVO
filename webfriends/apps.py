@@ -2,7 +2,6 @@
 
 from django.apps import AppConfig
 
-
-class ResultConfig(AppConfig):
-    name = 'resulttable'
-    verbose_name = 'Tabela dos Resultados'
+class WebFriendsConfig(AppConfig):
+    name = 'webfriends'
+    verbose_name = "Observatório Virtual"
