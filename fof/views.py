@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from django.conf import settings
 from django.contrib.auth.models import User
-from fof.forms import ExecutionForm
-from fof.models import Execution, Algorithms, UsuarioFriends
+from fof.forms import FoFForm
+from fof.models import FoF, Algorithms, UsuarioFriends
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -22,8 +22,8 @@ def home(request):
         # res = teste.delay()
         # print(res)
         title = "Welcome %s" % request.user
-        print((request.user.id))
-        executionList = Execution.objects.filter(
+        # print((request.user.id))
+        executionList = FoF.objects.filter(
             request_by__usuario__id=request.user.id).order_by('-id')
         try:
             UserProf = UsuarioFriends.objects.get(usuario__id=request.user.id)
@@ -60,9 +60,11 @@ def home(request):
 def fof(request):
 
     if request.method != 'POST':
-        form = ExecutionForm(request.POST, request.FILES or None)
+
+        form = FoFForm(request.POST, request.FILES or None)
 
         if not form.is_valid():
+
             title = "Experiments %s" % (request.user)
             # form_html = render_crispy_form(form)
             context = {
@@ -75,7 +77,7 @@ def fof(request):
         algorithm = request.POST.get('Algorithm')
         d_User = User.objects.get(username=request.user)
         alg = Algorithms.objects.get(nameAlg=algorithm)
-        execution = Execution(
+        execution = FoF(
             request_by=d_User.usuariofriends,
             algorithm=alg,
         )
@@ -84,7 +86,6 @@ def fof(request):
         execution.save()
 
         if (request.FILES):
-            # print(request.FILES)
             fileIn = request.FILES["Input"]
             execution.inputFile = fileIn
             execution.save()
@@ -102,14 +103,13 @@ def fof(request):
         outputFilePath = './users/user_' + \
             str(execution.request_by.usuario.id) + \
             '/' + str(execution.id) + '/output'
-
         teste = RunExperiment.delay(query, execution.id)
         execution.save()
         title = "Experiments %s" % (request.user)
 
         return HttpResponseRedirect(reverse('home'))
 
-    form = ExecutionForm(request.POST or None)
+    form = FoFForm(request.POST or None)
     title = "Experiments %s" % (request.user)
     context = {
         "title": title,

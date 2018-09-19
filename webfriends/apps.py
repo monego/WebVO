@@ -2,6 +2,7 @@
 
 from django.apps import AppConfig
 
+
 class WebFriendsConfig(AppConfig):
     name = 'webfriends'
     verbose_name = "Observatório Virtual"

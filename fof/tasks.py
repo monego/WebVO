@@ -1,4 +1,4 @@
-from .models import UsuarioFriends, Execution
+from .models import UsuarioFriends
 from celery.utils.log import get_task_logger
 # from celery.decorators import task
 from webfriends.celery import app

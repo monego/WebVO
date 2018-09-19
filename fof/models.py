@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from webfriends.models import UsuarioFriends
 
 
 class Algorithms(models.Model):
@@ -16,24 +17,6 @@ class Algorithms(models.Model):
         return self.nameAlg
 
 
-class UsuarioFriends(models.Model):
-    nickname = models.CharField(
-        default='default', max_length=30, blank=False, null=True)
-    company = models.CharField(
-        default='default', max_length=50, blank=False, null=True)
-    usuario = models.OneToOneField(User, on_delete=models.PROTECT)
-    date_register = models.DateTimeField('date_register', auto_now_add=True)
-    last_access = models.DateTimeField('last_access', auto_now=True)
-    resultsPerPage = models.IntegerField(default=10)
-
-    class Meta:
-        managed = True
-        db_table = 'usuario'
-
-    def __unicode__(self):
-        return self.nickname
-
-
 def user_directory_path_in(instance, filename):
     return './users/user_{0}/{1}/input'.format(
         instance.request_by.usuario.id, instance.id)
@@ -44,7 +27,7 @@ def user_directory_path_out(instance, filename):
         instance.request_by.usuario.id, instance.id)
 
 
-class Execution(models.Model):
+class FoF(models.Model):
     request_by = models.ForeignKey(UsuarioFriends, models.PROTECT)
     date_requisition = models.DateTimeField(
         'date_requisition',
@@ -62,6 +45,3 @@ class Execution(models.Model):
     class Meta:
         managed = True
         db_table = 'execucao'
-
-    def __unicode__(self):
-        return self.request_by.id  # arrumar

@@ -1,14 +1,5 @@
 from django.contrib import admin
-from .models import UsuarioFriends, Execution, Algorithms
-
-
-class UsuarioFriendsAdmin(admin.ModelAdmin):
-        fields = ['nickname', 'usuario', 'resultsPerPage']
-        list_display = ('nickname',
-                        'usuario',
-                        'date_register',
-                        'last_access',
-                        'resultsPerPage')
+from .models import FoF, Algorithms
 
 
 class ExecutionAdmin(admin.ModelAdmin):
@@ -33,6 +24,5 @@ class AlgAdmin(admin.ModelAdmin):
 # 	fields = ['user', 'execution']
 # 	list_display = ['id','user',' executions']
 
-admin.site.register(UsuarioFriends, UsuarioFriendsAdmin)
-admin.site.register(Execution, ExecutionAdmin)
+admin.site.register(FoF, ExecutionAdmin)
 admin.site.register(Algorithms, AlgAdmin)

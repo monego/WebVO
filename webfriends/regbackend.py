@@ -1,7 +1,7 @@
 from registration.backends.default.views import RegistrationView
 from django.conf.urls import url
-from fof.forms import UsuarioFriendsForm
-from fof.models import UsuarioFriends
+from webfriends.forms import UsuarioFriendsForm
+from webfriends.models import UsuarioFriends
 
 
 class MyRegistrationView(RegistrationView):

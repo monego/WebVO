@@ -39,10 +39,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'registration',
     'crispy_forms',
-    'fof',
-    'image',
-    'resulttable',
-    'webfriends',
+    'fof.apps.FoFConfig',
+    'image.apps.ImageProcessingConfig',
+    'resulttable.apps.ResultConfig',
+    'webfriends.apps.WebFriendsConfig',
 )
 
 MIDDLEWARE = (
