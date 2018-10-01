@@ -10,7 +10,7 @@ def file_size(value):
     if value.size > limit:
         raise ValidationError(('Arquivo muito grande. '
                               'Tamanho máximo deve ser de 20MB.'))
-        return render(request, "experiments.html")
+        return render(request, "FoF.html")
 
 
 class FoFForm(forms.Form):

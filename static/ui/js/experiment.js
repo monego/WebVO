@@ -19,7 +19,7 @@
 // }
 
 // function create_post(){
-// 	$("#id_Algorithm").prop('disabled', false);	
+// 	$("#id_Algorithm").prop('disabled', false);
 // 	$("#id_opt").prop('disabled', false);
 // 	toggleFormWait();
 // 	$.ajax({
@@ -37,7 +37,7 @@
 // 	        if (!(data['success'])) {
 // 	        	// $('#form_exec').replaceWith(data.form_html);
 // 	        	$('#form_exec').replaceWith(data['form_html']);
-// 	        	$('#form_exec').prepend('<input type="hidden" name="csrfmiddlewaretoken" value="'+csrftoken+'">');   
+// 	        	$('#form_exec').prepend('<input type="hidden" name="csrfmiddlewaretoken" value="'+csrftoken+'">');
 // 	        	$('#execute').click(function(){
 // 					$('#form_exec').submit();
 // 				});
@@ -50,7 +50,7 @@
 // 	        }
 // 	        else {
 // 	        	$('#form_exec').replaceWith(data['form_html']);
-// 	        	$('#form_exec').prepend('<input type="hidden" name="csrfmiddlewaretoken" value="'+csrftoken+'">');   
+// 	        	$('#form_exec').prepend('<input type="hidden" name="csrfmiddlewaretoken" value="'+csrftoken+'">');
 // 	   //      	$('#form_exec').on('submit', function(event){
 // 				//     event.preventDefault();
 // 				//     console.log("form submitted!")  // sanity check
@@ -87,30 +87,29 @@
 
 // };
 
-function setHandlers(){
-	$('#id_PresetExecution').on("change", function(){
-		var opcao = $('#id_PresetExecution').val();
-		console.log(opcao);
-		var algSelect = $('#id_PresetExecution option:selected').text();
-		if(opcao){
-			$("#id_Algorithm option").filter(function() {
-		   		return $(this).text() == algSelect; 
-			}).prop('selected', true);
-			$("#id_opt").val('');
-			$("#id_Algorithm").prop('disabled', true);	
-			$("#id_opt").prop('disabled', true);
-			$("#id_fileIn").prop('disabled', true);
+function setHandlers() {
+	  $('#id_PresetExecution').on("change", function(){
+		    var opcao = $('#id_PresetExecution').val();
+		    console.log(opcao);
+		    var algSelect = $('#id_PresetExecution option:selected').text();
+		    if(opcao){
+			      $("#id_Algorithm option").filter(function() {
+		   		      return $(this).text() == algSelect;
+			      }).prop('selected', true);
+			      $("#id_opt").val('');
+			      $("#id_Algorithm").prop('disabled', true);
+			      $("#id_opt").prop('disabled', true);
+			      $("#id_fileIn").prop('disabled', true);
 
-		}else{
-			$('select#id_Algorithm').prop('selectedIndex', 0);
-			$("#id_opt").val('');	
-			$("#id_Algorithm").prop('disabled', false);	
-			$("#id_opt").prop('disabled', false);
-			$("#id_fileIn").prop('disabled', false	);
-		}
-	});
+		    }else{
+			      $('select#id_Algorithm').prop('selectedIndex', 0);
+			      $("#id_opt").val('');
+			      $("#id_Algorithm").prop('disabled', false);
+			      $("#id_opt").prop('disabled', false);
+			      $("#id_fileIn").prop('disabled', false	);
+		    }
+	  });
 };
-
 
 setHandlers();
 // setTriggers();

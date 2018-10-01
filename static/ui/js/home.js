@@ -17,7 +17,7 @@ $("#btExcluir").click(function(){
 	console.log(asd);
 	var data = {
 		'dic': asd,
-	}
+	};
 });
 
 $("#formRemove").submit(function(){
@@ -33,5 +33,5 @@ $("#formRemove").submit(function(){
             type: 'hidden',
             name: "data",
             value: asd
-        }))
+  }));
 });

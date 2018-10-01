@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 from webfriends.models import UsuarioFriends
 
 
@@ -34,11 +34,11 @@ class FoF(models.Model):
         auto_now_add=True)
     status = models.IntegerField(default=1)
     algorithm = models.ForeignKey(Algorithms,
-                                  models.PROTECT,
-                                  null=True,
-                                  blank=False)
+                                  models.PROTECT)
+                              #    null=True,
+                              #    blank=False)
     inputFile = models.FileField(upload_to=user_directory_path_in, null=True)
-    rperc = models.FloatField(default=0.1)
+    rperc = models.FloatField()
     outputFile = models.FileField(upload_to=user_directory_path_out, null=True)
     time = models.FloatField(default=-1)
 

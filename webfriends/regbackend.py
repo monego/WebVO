@@ -1,5 +1,5 @@
-from registration.backends.default.views import RegistrationView
 from django.conf.urls import url
+from registration.backends.default.views import RegistrationView
 from webfriends.forms import UsuarioFriendsForm
 from webfriends.models import UsuarioFriends
 

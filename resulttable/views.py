@@ -1,11 +1,11 @@
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
-from django.template import RequestContext
+from crispy_forms.helper import FormHelper
+from crispy_forms.utils import render_crispy_form
 from django.core.mail import send_mail
 from django.http import HttpResponse
+from django.shortcuts import render
+from django.template import RequestContext
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from jsonview.decorators import json_view
-from crispy_forms.utils import render_crispy_form
-from crispy_forms.helper import FormHelper
 
 
 def downloadInputFile(request):

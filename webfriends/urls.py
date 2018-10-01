@@ -1,9 +1,9 @@
-from django.urls import include, path
-from django.contrib import admin
-from django.conf.urls.static import static
-from django.conf import settings
 from . import regbackend
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import include, path
 from django.views.generic.base import TemplateView
 import fof
 import resulttable
@@ -14,13 +14,13 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
 
-    # urls register
     path('accounts/register/', regbackend.MyRegistrationView.as_view(),
          name='register_custom'),
     path('accounts/', include('registration.backends.default.urls')),
 
     path('contact/', views.contact, name="contact"),
     path('about/', views.about, name="about"),
+    path('experiments/', views.home, name="home"),
 
     path('register/complete/',
          TemplateView.as_view(template_name='registration/registration_complete.html'),

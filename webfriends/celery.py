@@ -1,9 +1,10 @@
 # Configuração exemplo adaptada de
 # http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
 
-import os
 from celery import Celery
 from django.conf import settings
+import os
+
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'webfriends.settings')
 
