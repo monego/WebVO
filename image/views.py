@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from image.forms import ImageForm
 from image.tasks import ImageExperiment
+from resulttable.models import Execution
 
 def image(request):
     form = ImageForm(request.POST or None)
@@ -12,7 +13,7 @@ def image(request):
         inputFile = request.FILES["Input"]
         wavelet = request.POST.get("wavelet")
         method = request.POST.get("method")
-        execution = Image(
+        execution = Execution(
             request_by=d_User.usuariofriends,
             image_algorithm=alg,
             inputFile = request.FILES["Input"],
