@@ -1,5 +1,5 @@
 from django import forms
-from .models import Algorithms
+from .models import FoFAlgorithm
 from django.core.exceptions import ValidationError
 from django.shortcuts import render
 

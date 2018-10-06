@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import FoF, Algorithms
+from .models import FoFAlgorithm
 
 
 class ExecutionAdmin(admin.ModelAdmin):
@@ -24,5 +24,4 @@ class AlgAdmin(admin.ModelAdmin):
 # 	fields = ['user', 'execution']
 # 	list_display = ['id','user',' executions']
 
-admin.site.register(FoF, ExecutionAdmin)
-admin.site.register(Algorithms, AlgAdmin)
+admin.site.register(FoFAlgorithm, AlgAdmin)

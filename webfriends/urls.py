@@ -6,10 +6,12 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView
 import fof
+import image
 import resulttable
 
 urlpatterns = [
     path('', include('fof.urls')),
+    path('', include('image.urls')),
     path('', include('resulttable.urls')),
 
     path('admin/', admin.site.urls),
@@ -20,7 +22,7 @@ urlpatterns = [
 
     path('contact/', views.contact, name="contact"),
     path('about/', views.about, name="about"),
-    path('experiments/', views.home, name="home"),
+    path('', views.home, name="home"),
 
     path('register/complete/',
          TemplateView.as_view(template_name='registration/registration_complete.html'),

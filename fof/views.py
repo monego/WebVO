@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_protect
 from fof.forms import FoFForm
-from fof.models import FoF, Algorithms, UsuarioFriends
+from fof.models import FoFAlgorithm, UsuarioFriends
 from fof.tasks import RunExperiment
 from webfriends.views import home
 
@@ -13,10 +13,9 @@ from webfriends.views import home
 def fof(request):
     form = FoFForm(request.POST or None)
     # if form.is_valid():
-    #     print('hey3')
-    #     algorithm = request.POST.get('Algorithm')
+    #     algorithm = request.POST.get('FoFAlgorithm')
     #     d_User = User.objects.get(username=request.user)
-    #     alg = Algorithms.objects.get(nameAlg=algorithm)
+    #     alg = FoFAlgorithm.objects.get(nameAlg=algorithm)
     #     execution = FoF(
     #         request_by=d_User.usuariofriends,
     #         algorithm=alg,
@@ -73,9 +72,9 @@ def fof(request):
 
 #             return render(request, "FoF.html", context)
 
-#         algorithm = request.POST.get('Algorithm')
+#         algorithm = request.POST.get('FoFAlgorithm')
 #         d_User = User.objects.get(username=request.user)
-#         alg = Algorithms.objects.get(nameAlg=algorithm)
+#         alg = FoFAlgorithm.objects.get(nameAlg=algorithm)
 #         execution = FoF(
 #             request_by=d_User.usuariofriends,
 #             algorithm=alg,

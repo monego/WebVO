@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
-from fof.models import FoF # Temporário, precisa corrigir
+from resulttable.models import Execution
 from webfriends.forms import ContactForm
 from webfriends.models import UsuarioFriends
 from webfriends import settings
@@ -18,7 +18,7 @@ def home(request):
         return render(request, "welcome.html", context)
     else:
         title = "Welcome %s" % request.user
-        executionList = FoF.objects.filter( # Corrigir a lista de execução
+        executionList = Execution.objects.filter( # Corrigir a lista de execução
             request_by__usuario__id=request.user.id).order_by('-id')
         try:
             UserProf = UsuarioFriends.objects.get(usuario__id=request.user.id)
