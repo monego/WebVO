@@ -16,5 +16,5 @@ class UsuarioFriends(models.Model):
         managed = True
         db_table = 'usuario'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nickname

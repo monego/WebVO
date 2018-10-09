@@ -10,5 +10,5 @@ class ImageAlgorithm(models.Model):
         managed = True
         db_table = 'image_algorithm'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nameAlg

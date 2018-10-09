@@ -13,5 +13,5 @@ class FoFAlgorithm(models.Model):
         managed = True
         db_table = 'fof_algorithm'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nameAlg
