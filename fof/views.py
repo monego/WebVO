@@ -10,11 +10,13 @@ from fof.tasks import RunExperiment
 from resulttable.models import Execution
 from webfriends.views import home
 
+
 @csrf_protect
 def fof(request):
     if request.method == 'POST':
         form = FoFForm(request.POST, request.FILES or None)
 
+        print(request.POST)
         if not form.is_valid():
 
             title = "Experiments %s" % (request.user)
@@ -26,12 +28,11 @@ def fof(request):
 
             return render(request, "FoF.html", context)
 
-        algorithm = request.POST.get('FoFAlgorithm')
+        algorithm = request.POST.get('Algorithm')
         d_User = User.objects.get(username=request.user)
-        alg = FoFAlgorithm.objects.get(nameAlg=algorithm)
+        alg = FoFAlgorithm.objects.get(idAlg=algorithm)
         execution = Execution(
             request_by=d_User.usuariofriends,
-            algorithm=alg,
         )
 
         execution.rperc = request.POST["Rperc"]

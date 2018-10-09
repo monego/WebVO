@@ -1,37 +1,47 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from image.forms import ImageForm
 from image.tasks import ImageExperiment
 from resulttable.models import Execution
 
 def image(request):
-    form = ImageForm(request.POST or None)
 
-    if form.is_valid():
-        algorithm = request.POST.get('ImageAlgorithm')
+    if request.method == 'POST':
+
+        form = ImageForm(request.POST, request.FILES or None)
+
+        if not form.is_valid():
+            title = "Experiments %s" % (request.user)
+
+            context = {
+                "form": form,
+                "title": title
+            }
+
+            return render(request, "image.html", context)
+
+        algorithm = request.POST['Algorithm']
         d_User = User.objects.get(username=request.user)
-        alg = ImageAlgorithm.objects.get(nameAlg=algorithm)
         inputFile = request.FILES["Input"]
-        wavelet = request.POST.get("wavelet")
-        method = request.POST.get("method")
+        wavelet = request.POST.get("Wavelet")
+        method = request.POST.get("Method")
         execution = Execution(
             request_by=d_User.usuariofriends,
-            image_algorithm=alg,
             inputFile = request.FILES["Input"],
-            wavelet=wavelet,
-            method=method
         )
 
         execution.save()
 
-        ImageExperiment.delay((alg, inputFile, wavelet, method))
+        ImageExperiment.delay(('wavelet', inputFile, wavelet, method))
 
         return HttpResponseRedirect(reverse('home'))
 
-    title = "Experiments %s" % (request.user)
+    form = ImageForm(request.POST or None)
 
+    title = "Experiments %s" % (request.user)
     context = {
-        "form": form,
-        "title": title
+        "title": title,
+        "form": form
     }
 
     return render(request, "image.html", context)

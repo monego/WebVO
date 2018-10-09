@@ -20,6 +20,7 @@ class Execution(models.Model):
         'date_requisition',
         auto_now_add=True)
     status = models.IntegerField(default=1)
+    #algorithm = models.ForeignKey(FoFAlgorithm, null=True, blank=False, on_delete=models.SET_NULL)
     inputFile = models.FileField(upload_to=user_directory_path_in, null=True)
     outputFile = models.FileField(upload_to=user_directory_path_out, null=True)
     time = models.FloatField(default=-1)
