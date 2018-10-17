@@ -7,10 +7,14 @@ import time
 
 logger = get_task_logger(__name__)
 
-@app.task(name="RunExperiment")
-def RunExperiment(execution, ide):
+@app.task(bind=True, name="RunExperiment")
+def RunExperiment(self, execution, ide):
 
     server_url = 'http://127.0.0.1:8000'
+
+    print("Self: ", self)
+    print("Execution: ", execution)
+    print("IDE: ", ide)
 
     if 'PORT' in os.environ:
         server_url += ':' + os.environ['PORT']
@@ -19,14 +23,20 @@ def RunExperiment(execution, ide):
     os.system(execution)
     dur = time.time() - start
 
+    print(":(((())))")
+
     files = {'file': str("/"+str(ide) + "/output")}
     path = str(str(ide)+"/output")
 
-    files = {'file': open(path, 'rb')}
-    data = {'id': str(ide), 'time': dur}
-    r = requests.post('http://127.0.0.1:8000' + '/experiments/result',
-                      files=files,
-                      data=data)
+    print(":))))))")
+
+    # files = {'file': open(path, 'rb')}
+    # data = {'id': str(ide), 'time': dur}
+    # r = requests.post('http://127.0.0.1:8000' + '/experiments/result',
+    #                   files=files,
+    #                   data=data)
+
+    print(":DDDDD")
 
     # print((r.status_code, r.reason))
     # execution.status = 2
