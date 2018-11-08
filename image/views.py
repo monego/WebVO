@@ -2,18 +2,18 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from image.forms import ImageForm
-from image.tasks import ImageExperiment
+from image.forms import WaveletForm
+from image.tasks import WaveletExperiment
 from resulttable.models import Execution
 import codecs
 import simplejson as json
 import skimage.io as skio
 
-def image(request):
+def wavelet(request):
 
     if request.method == 'POST':
 
-        form = ImageForm(request.POST, request.FILES or None)
+        form = WaveletForm(request.POST, request.FILES or None)
 
         if not form.is_valid():
             title = "Experiments %s" % (request.user)
@@ -23,7 +23,7 @@ def image(request):
                 "title": title
             }
 
-            return render(request, "image.html", context)
+            return render(request, "wavelet.html", context)
 
         algorithm = request.POST['Algorithm']
         d_User = User.objects.get(username=request.user)
@@ -53,7 +53,7 @@ def image(request):
 
         execution.save()
 
-        run = ImageExperiment.delay(('wavelet', img_json, wavelet, method))
+        run = WaveletExperiment.delay(('wavelet', img_json, wavelet, method), request.user.email)
 
         print(run)
 
@@ -64,7 +64,7 @@ def image(request):
 
         return HttpResponseRedirect(reverse('home'))
 
-    form = ImageForm(request.POST or None)
+    form = WaveletForm(request.POST or None)
 
     title = "Experiments %s" % (request.user)
     context = {
@@ -72,4 +72,4 @@ def image(request):
         "form": form
     }
 
-    return render(request, "image.html", context)
+    return render(request, "wavelet.html", context)

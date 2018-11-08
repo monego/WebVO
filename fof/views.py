@@ -56,7 +56,7 @@ def fof(request):
         outputFilePath = './users/user_' + \
             str(execution.request_by.usuario.id) + \
             '/' + str(execution.id) + '/output'
-        teste = RunExperiment.delay(query, execution.id)
+        teste = RunExperiment.delay(query, execution.id, request.user.email)
         execution.save()
         title = "Experiments %s" % (request.user)
 

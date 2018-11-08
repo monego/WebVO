@@ -9,7 +9,7 @@ import skimage.restoration as skr
 logger = get_task_logger(__name__)
 
 @app.task(bind=True, name="ImageExperiment")
-def ImageExperiment(self, request):
+def WaveletExperiment(self, request, user_email):
 
     server_url = 'http://127.0.0.1:8000'
 
@@ -19,7 +19,9 @@ def ImageExperiment(self, request):
     if request[0] == 'wavelet':
         d = skr.denoise_wavelet(img_dejson, wavelet=request[2], method=request[3])
 
-        np.save("~/Downloads/TWRP/test", d)
+        print(d)
+
+        # skio.imsave("/home/torus/Downloads/TWRP/test.png", d)
 
         # result = d.tolist()
         # file_path = "/tmp/file.json"
@@ -32,3 +34,11 @@ def ImageExperiment(self, request):
 #    r = requests.post(server_url + 'experiments/result',
 #                      files=files,
 #                      data=data)
+
+    #send_mail(
+    #    '[Observatório Virtual] Tarefa concluída',
+    #    'A tarefa identificada pelo número ', ide, ', do aplicativo Imagens, foi concluída. Clique aqui para fazer o download do resultado.',
+    #    'anawebfof@gmail.com',
+    #    [user_email],
+    #    fail_silently=False,
+    #)

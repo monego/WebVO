@@ -1,20 +1,17 @@
 from .models import UsuarioFriends
 from celery.utils.log import get_task_logger
+from django.core.mail import send_mail
 from webfriends.celery import app
-import requests
 import os
+import requests
 import time
 
 logger = get_task_logger(__name__)
 
 @app.task(bind=True, name="RunExperiment")
-def RunExperiment(self, execution, ide):
+def RunExperiment(self, execution, ide, user_email):
 
     server_url = 'http://127.0.0.1:8000'
-
-    print("Self: ", self)
-    print("Execution: ", execution)
-    print("IDE: ", ide)
 
     if 'PORT' in os.environ:
         server_url += ':' + os.environ['PORT']
@@ -23,21 +20,23 @@ def RunExperiment(self, execution, ide):
     os.system(execution)
     dur = time.time() - start
 
-    print(":(((())))")
-
     files = {'file': str("/"+str(ide) + "/output")}
     path = str(str(ide)+"/output")
-
-    print(":))))))")
 
     # files = {'file': open(path, 'rb')}
     # data = {'id': str(ide), 'time': dur}
     # r = requests.post('http://127.0.0.1:8000' + '/experiments/result',
     #                   files=files,
     #                   data=data)
-
-    print(":DDDDD")
-
+    
+    #send_mail(
+    #    '[Observatório Virtual] Tarefa concluída',
+    #    'A tarefa identificada pelo número ', ide, ', do aplicativo FoF, foi concluída. Clique aqui para fazer o download do resultado.',
+    #    'anawebfof@gmail.com',
+    #    [user_email],
+    #    fail_silently=False,
+    #)
+    
     # print((r.status_code, r.reason))
     # execution.status = 2
     # execution.save()
