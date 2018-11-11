@@ -8,27 +8,22 @@ import skimage.restoration as skr
 
 logger = get_task_logger(__name__)
 
-@app.task(bind=True, name="ImageExperiment")
-def WaveletExperiment(self, request, user_email):
+@app.task(bind=True, name="Wavelet")
+def WaveletExperiment(self, request, user_email, inputfile, outputfilepath):
 
     server_url = 'http://127.0.0.1:8000'
 
-    img_json = json.loads(request[1])
-    img_dejson = np.array(img_json)
+    img_dejson = skio.imread(inputfile)
+    
+    d = skr.denoise_wavelet(img_dejson, wavelet=request[0], method=request[1])
 
-    if request[0] == 'wavelet':
-        d = skr.denoise_wavelet(img_dejson, wavelet=request[2], method=request[3])
-
-        print(d)
-
-        # skio.imsave("/home/torus/Downloads/TWRP/test.png", d)
+    skio.imsave(outputfilepath, d)
 
         # result = d.tolist()
         # file_path = "/tmp/file.json"
         # json.dump(result, codecs.open(file_path, 'w', encoding='utf-8'), separators=(',', ':'), sort_keys=True, indent=4)
 
         # result_json = codecs.open(file_path, 'r', encoding='utf-8').read()
-
         # return result_json
 
 #    r = requests.post(server_url + 'experiments/result',

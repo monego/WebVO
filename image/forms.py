@@ -10,6 +10,7 @@ def file_size(value):
 
 
 class WaveletForm(forms.Form):
-    Input = forms.FileField(label="Imagem", required=True, validators=[file_size])
+    Input = forms.ImageField(label="Imagem", required=True, validators=[file_size])
     Wavelet = forms.ChoiceField(label="Wavelet", choices=(("db1", "db1"), ("db2", "db2"), ("db3", "db3")))
     Method = forms.ChoiceField(label="Método", choices=(("visushrink", "VisuShrink"), ("bayeshrink", "BayesShrink")))
+    Format = forms.ChoiceField(label="Formato", choices=(("bmp", "BMP"), ("png", "PNG")))
