@@ -58,8 +58,10 @@ def wavelet(request):
         outputFilePath = settings.MEDIA_ROOT + 'users/user_' + \
             str(execution.request_by.usuario.id) + \
             '/' + str(execution.id) + '/output.' + request.POST.get("Format")
+
+        print(outputFilePath)
         
-        run = WaveletExperiment.delay((wavelet, method), request.user.email, queryInputFile, outputFilePath)
+        run = WaveletExperiment.delay((wavelet, method), request.user.email, queryInputFile, outputFilePath, execution.id)
 
         return HttpResponseRedirect(reverse('home'))
 

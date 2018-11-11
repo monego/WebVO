@@ -1,15 +1,17 @@
 from celery.utils.log import get_task_logger
+from resulttable.models import Execution
 from webfriends.celery import app
 import simplejson as json
 import codecs
 import numpy as np
+import requests
 import skimage.io as skio
 import skimage.restoration as skr
 
 logger = get_task_logger(__name__)
 
 @app.task(bind=True, name="Wavelet")
-def WaveletExperiment(self, request, user_email, inputfile, outputfilepath):
+def WaveletExperiment(self, request, user_email, inputfile, outputfilepath, ide):
 
     server_url = 'http://127.0.0.1:8000'
 
@@ -18,17 +20,16 @@ def WaveletExperiment(self, request, user_email, inputfile, outputfilepath):
     d = skr.denoise_wavelet(img_dejson, wavelet=request[0], method=request[1])
 
     skio.imsave(outputfilepath, d)
+    
+    files = {'image': open(outputfilepath, 'rb')}
 
-        # result = d.tolist()
-        # file_path = "/tmp/file.json"
-        # json.dump(result, codecs.open(file_path, 'w', encoding='utf-8'), separators=(',', ':'), sort_keys=True, indent=4)
+    requests.post(server_url + '/experiments/result',
+                  files=files)
 
-        # result_json = codecs.open(file_path, 'r', encoding='utf-8').read()
-        # return result_json
-
-#    r = requests.post(server_url + 'experiments/result',
-#                      files=files,
-#                      data=data)
+    exec = Execution.objects.get(pk=ide)
+    exec.outputFile = outputfilepath
+    exec.status = 3
+    exec.save()
 
     #send_mail(
     #    '[Observatório Virtual] Tarefa concluída',
