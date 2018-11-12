@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags %}
 
-{% block head_title%}{{title}}{%endblock%}
+{% block head_title%}{{title}}{% endblock %}
 
 {% block jumbotron%}
   <!-- Main component for a primary marketing message or call to action -->
@@ -12,4 +12,4 @@
           <a class="btn btn-lg btn-primary" href="{% url 'register_custom' %}" role="button">Registre-se &raquo;</a>
         </p>
       </div>
-{%endblock%}
+{% endblock %}

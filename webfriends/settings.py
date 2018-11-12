@@ -109,7 +109,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = '/tmp/media/'
 
 # crispy
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # django registration redux
 ACCOUNT_ACTIVATION_DAYS = 7
