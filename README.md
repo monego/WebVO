@@ -10,7 +10,7 @@ Original application developed by Otávio Madalosso: https://github.com/Madaloss
 Using a virtual environment: first, install the Python 3 version of [pip](https://pypi.org/project/pip/) and [virtualenv](https://pypi.org/project/virtualenv/). Also install Redis, as it will be used as the Celery broker. On a Debian based system, type as root:
 
 ```bash 
-$ apt install python3-pip python3-virtualenv redis-server
+$ apt install python3-pip virtualenv redis-server
 ```
 
 1. Open the project's root folder and create a new virtual environment: 
@@ -19,7 +19,7 @@ $ apt install python3-pip python3-virtualenv redis-server
 $ virtualenv myenv -p "/usr/bin/python3" # Or whichever is the Python3 binary
 ```
 
-2. Activate it and create a requirements log: 
+2. Activate it:
 
 ``` bash 
 $ source myvenv/bin/activate
