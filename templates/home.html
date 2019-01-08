@@ -3,6 +3,7 @@
 {% load staticfiles %}
 {% block head_title %}{{title}}{% endblock %}
 
+<!--TABELA DOS EXPERIMENTOS -->
 {% block content %}
 <div class="row">
   {% if data != None %}
@@ -12,14 +13,15 @@
         <tr>
           <th><input id="checkHeader" type="checkbox" value=""></th>
           <th>ID</th>
-          <th data-align="center">Data Requisição</th>
+          <th data-align="center">Requisition date</th>
           <th data-align="center">Status</th>
-          <th>Algoritmo</th>
-          <th>Tempo</th>
-          <th>Arquivo Entrada</th>
-          <th>Arquivo Saída</th>
+          <th>Algorithm</th>
+          <th>Time</th>
+          <th>Input file</th>
+          <th>Output file</th>
         </tr>
       </thead>
+
       <tbody id="tableExp">
         {% for exp in data %}
         <tr>
@@ -28,13 +30,13 @@
           <td>{{exp.date_requisition}}</td>
           <td>
             {% if exp.status == 1 %}
-            Aguardando
+            Waiting
             {% else %}
             {% if exp.status == 2 %}
-            Executando
+            Running
             {% else %}
             {% if exp.status == 3 %}
-            Finalizado
+            Finished
             {% endif %}
             {% endif %}
             {% endif %}
@@ -42,23 +44,23 @@
           <td>{{exp.algorithm}}</td>
           <td>
             {% if exp.time == -1 %}
-            -
+              -
             {% else %}
-            {{exp.time|floatformat:-4}} s
+              {{exp.time|floatformat:-4}} s
             {% endif %}
           </td>
           <td>
             {% if exp.inputFile%}
             <a  href="{% url 'downloadInputFile'%}?id={{exp.id}}"><button type="button" class="btn btn-success">Download</button></a>
             {% else %}
-            <button type="button" class="btn btn-warning disabled">Sem Entrada</button>
+            <button type="button" class="btn btn-warning disabled">No input</button>
             {% endif %}
           </td>
           <td>
             {% if exp.outputFile%}
             <a  href="{% url 'downloadOutputFile'%}?id={{exp.id}}"><button type="button" class="btn btn-success">Download</button></a>
             {% else %}
-            <button type="button" class="btn btn-warning disabled">Sem Resultado</button>
+            <button type="button" class="btn btn-warning disabled">No results</button>
             {% endif %}
           </td>
         </tr>
@@ -92,7 +94,6 @@
           {% endif %}
           {% endfor %}
 
-
           {% if data.has_next %}
           <li>
             <a href="?page={{ data.next_page_number }}" aria-label="Next">
@@ -103,29 +104,30 @@
             <span aria-hidden="true">&raquo;</span>
             {% endif %}
           </li>
-
         </ul>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <ul class="pagination">
           <form id="formRemove" method='POST' action='{% url 'expRemove' %}' enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="submit" id="btExcluir" class="btn btn-default btn-sm" value="Excluir">
+            <input type="submit" id="btExcluir" class="btn btn-default btn-sm" value="Remove">
           </form>
         </ul>
       </ul>
     </nav>
 
   </div>
+
+
   {% else %}
   <div id="colForm" class="col-sm-3 col-md-3"></div>
   <div id="colForm" class="col-sm-6 col-md-6 text-center">
     <hr>
-    <p1>Você não possui experimentos</p1>
+    <p1>You have no experiments.</p1>
     <hr>
   </div>
   <div id="colForm" class="col-sm-3 col-md-3"></div>
   {% endif %}
-
 </div>
+
 {% endblock %}

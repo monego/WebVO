@@ -5,11 +5,17 @@
 {% block head_title%}{{title}}{% endblock %}
 
 {% block jumbotron%}
-  <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Observatório Virtual</h1>
-        <p> Portal desenvolvido para a execução remota de experimentos com algoritmos voltados ao processamento de dados gerados em análises da área de astronomia. </p>
+        <h1>Web Portal for Execution of Applications in Astronomy</h1>
+        <p> Web portal for remote execution of experiments with algorithms to process data from simulations in the Astronomy field.</p>
+
+          {% if request.user.is_authenticated == false %}
           <a class="btn btn-lg btn-primary" href="{% url 'register_custom' %}" role="button">Registre-se &raquo;</a>
+          {% endif %}
         </p>
       </div>
+{% endblock %}
+
+{% block container %}
+{% include "footer.html" %}
 {% endblock %}

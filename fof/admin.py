@@ -3,10 +3,10 @@ from .models import FoFAlgorithm
 
 
 class AlgAdmin(admin.ModelAdmin):
-        fields = ['nameAlg', 'desc', 'command']
-        list_display = ['idAlg',
-                        'nameAlg',
-                        'desc']
+        fields = ['nameFoF', 'descFoF', 'commandFoF']
+        list_display = ['idFoF',
+                        'nameFoF',
+                        'descFoF']
 
 
 # class NotesAdmin(admin.ModelAdmin):

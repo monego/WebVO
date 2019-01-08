@@ -1,6 +1,34 @@
 <footer class="footer">
+<div class="container">
+			<div class="row text-center text-xs-center text-sm-left text-md-left" style="padding-top:10px;padding-bottom:10px">
+				<div class="col-xs-10 col-sm-4 col-md-4" >
+					<h5>Menu</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="{% url 'home' %}">Home</a></li>
+						<li><a href="{% url 'about' %}">About</a></li>
+						<li><a href="{% url 'fofapp:about' %}">FoF</a></li>
+						<li><a href="{% url 'wavelet' %}">Wavelet</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Documentation</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="link">link</a></li>
+						<li><a href="link">link</a></li>
+						<li><a href="link">link</a></li>
+					</ul>
+				</div>
+                <div class="col-xs-12 col-sm-4 col-md-4">
+					<ul class="list-unstyled list-inline social text-center">
+                        <h5>Contact us</h5><br/>
+						<li class="list-inline-item"><a href="{% url 'contact' %}"><i class="fa fa-envelope"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
   <div class="container">
-    <p class="text-muted text-center">Criado por Otávio Migliavacca Madalosso</p>
+    <p class="text-muted text-center">Otávio Madalosso, Ana Solórzano and Vinícius Monego</p>
     <p class="text-muted text-center">2015</p>
   </div>
 </footer>

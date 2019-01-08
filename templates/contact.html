@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% block head_title %}Contato{% endblock %}
+{% block head_title %}Contact{% endblock %}
 
 
 {% block content %}
@@ -9,7 +9,8 @@
   <div class="col-sm-6 col-md-6 center-block">
     <form method="POST" action=".">{% csrf_token %}
       {{form|crispy}}
-      <input class='btn btn-primary center-block' type="submit" value="Enviar">
+      <p style="text-align: center" class="lead">
+        <input class='btn btn-primary center-block' type="submit" value="Send"></p>
     </form>
   </div>
   <div class="col-md-3 col-sm-3"></div>

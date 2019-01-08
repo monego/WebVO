@@ -5,4 +5,4 @@ from django.apps import AppConfig
 
 class FoFConfig(AppConfig):
     name = 'fof'
-    verbose_name = "Algoritmo Friends of Friends"
+    verbose_name = "Algoritmo Friends-of-Friends"

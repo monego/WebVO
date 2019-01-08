@@ -10,10 +10,11 @@ import image
 import resulttable
 
 urlpatterns = [
-    path('', include('fof.urls')),
     path('', include('image.urls')),
     path('', include('resulttable.urls')),
+    path('experiments/', views.table, name="experiments"),
 
+    path('fof/', include('fof.urls', namespace='fofapp')),
     path('admin/', admin.site.urls),
 
     path('accounts/register/', regbackend.MyRegistrationView.as_view(),

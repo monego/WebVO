@@ -1,1 +1,1 @@
-Registro completo para {{ site.name }}
+Complete registration for {{ site.name }}

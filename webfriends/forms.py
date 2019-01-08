@@ -7,6 +7,6 @@ class UsuarioFriendsForm(RegistrationFormUniqueEmail):
     company = forms.CharField(required=False)
 
 class ContactForm(forms.Form):
-    nome = forms.CharField()
-    email = forms.EmailField()
-    mensagem = forms.CharField()
+    nome = forms.CharField(label="Name")
+    email = forms.EmailField(label="E-mail")
+    mensagem = forms.CharField(label="Message")
