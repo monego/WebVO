@@ -1,0 +1,26 @@
+{%extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% crispy form %}
+
+{% block head_title%}Friends of Friends Algorithm{%endblock%}
+
+{% block content %}
+	{% if request.user.is_authenticated %}
+		<div id='row-form' class="row">
+			<div id="colForm" class="col-sm-3 col-md-3"></div>
+		  <div id="colForm" class="col-sm-6 col-md-6">
+				  <form id='form_exec' method='POST' action='{% url "fof" %}' enctype="multipart/form-data">
+				{% csrf_token %}
+					{# <div id="formContent"> Necessario para nao bugar com erro de validacao do crispy #}
+						{{form|crispy}}    {# Crispy que falha nao retorna formulario com o csrf_token  #}
+					{# </div>				   Isso ocasionava um erro de acesso. (gambiarra no javascript) #}
+					<input id='execute' class='btn btn-primary' type="submit" value="Executar">
+				</form>
+		  	</div>
+		  	<div id="colForm" class="col-sm-3 col-md-3"></div>
+		</div>
+	{%else%}
+		Faça o login para prosseguir
+	{%endif%}
+{%endblock%}

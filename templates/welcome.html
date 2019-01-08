@@ -1,0 +1,15 @@
+{%extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title%}{{title}}{% endblock %}
+
+{% block jumbotron%}
+  <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Observatório Virtual</h1>
+        <p> Portal desenvolvido para a execução remota de experimentos com algoritmos voltados ao processamento de dados gerados em análises da área de astronomia. </p>
+          <a class="btn btn-lg btn-primary" href="{% url 'register_custom' %}" role="button">Registre-se &raquo;</a>
+        </p>
+      </div>
+{% endblock %}
