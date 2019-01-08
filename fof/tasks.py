@@ -13,27 +13,21 @@ logger = get_task_logger(__name__)
 def RunFoFSerial(self, command, rperc, ide, dirpath):
 
     print("\n Executando o exp %s, algoritmo: %s" % (ide, command))
-    #os.system("mkdir " + str(ide))
+
     os.system("mkdir " + dirpath)
-    #os.system("wget http://127.0.0.1:8000/experiments/downloadInputFile?id=" + str(ide) + " -O ./" + str(ide) + "/input")
     os.system("wget http://127.0.0.1:8000/experiments/downloadInputFile?id=" + str(ide) + " -O " + dirpath + "/input")
+    #Running FoF
     start = time.time()
-    os.system(command + " " + dirpath + "/input " + rperc + " > " + str(ide) + "/output")
+    os.system(commadirpath + "/input " + rperc + " > " + dirpath + "/output")
     dur = time.time() - start
 
     path = str(dirpath + "/output")
-    print("CAMINHO OUTPUT:")
-    print(path)
-
     exec = Execution.objects.get(pk=ide)
     exec.outputFile = path
     exec.save()
 
     files = {'file': open(path, 'rb')}
     data = {'id': str(ide), 'time': dur}
-
-    print(files)
-    print(data)
 
     r = requests.post('http://127.0.0.1:8000/experiments/result', files=files, data=data)
 
@@ -42,10 +36,6 @@ def RunFoFSerial(self, command, rperc, ide, dirpath):
 @task(name="RunExperiment")
 def RunExperiment(command, ide):
     server_url = 'http://127.0.0.1:8000'
-
-    # if 'PORT' in os.environ:
-    #    server_url += ':' + os.environ['PORT']
-    #    print("Port " + os.environ['PORT'])
 
     print("\nExecutando o experimento %s %s" % (command, ide))
     os.system("mkdir " + str(ide))

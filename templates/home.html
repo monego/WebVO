@@ -67,67 +67,53 @@
         {% endfor %}
       </tbody>
     </table>
+  </div>
 
-    <nav>
-      <ul class="nav navbar-nav navbar-left">
-        <ul class="pagination">
-          {# CASO SEJA A PRIMEIRA PAGINA #}
+  {% else %}
+    <div id="colForm" class="col-sm-3 col-md-3"></div>
+    <div id="colForm" class="col-sm-6 col-md-6 text-center">
+      <hr>
+      <p1>You have no experiments.</p1>
+      <hr>
+    </div>
+    <div id="colForm" class="col-sm-3 col-md-3"></div>
+  {% endif %}
+
+</div>
+
+      <div style="padding-bottom:10px" >
+      <ul class="nav navbar-nav navbar-right">
+        <ul class="pagination no-margin pull-right">
+
           {% if data.has_previous %}
-          <li>
-            <a href="?page={{ data.previous_page_number }}" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          {% else %}
-          <li class="disabled">
-            <span aria-hidden="true">&laquo;</span>
-          </li>
+            <li class="page-item"><a class="page-link" href="?page={{ data.previous_page_number }}">Previous</a></li>
           {% endif %}
 
           {% for page, value in pagesIndex.items %}
-          {% if value > 0 %}
-          {% if page == 2 %}
-          <li class='active'><a href="#">{{value}}</a></li>
-          {% else %}
-          <li><a href="?page={{value}}">{{value}}</a></li>
-          {% endif %}
-          {% endif %}
+            {% if value > 0 %}
+              <li class="page-item"><a class="page-link" href="?page={{value}}">{{value}}</a></li>
+            {% endif %}
+
+              <!--{% if page == 2 %}-->
+              <!--<li class='active'><a href="#">{{value}}</a></li>-->
+              <!--{% else %}-->
+              <!--<li><a href="?page={{value}}">{{value}}</a></li>-->
+              <!--{% endif %}-->
+
           {% endfor %}
 
           {% if data.has_next %}
-          <li>
-            <a href="?page={{ data.next_page_number }}" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-            {% else %}
-          <li class="disabled">
-            <span aria-hidden="true">&raquo;</span>
-            {% endif %}
-          </li>
+          <li class="page-item"><a class="page-link" href="?page={{ data.next_page_number }}">Next</a></li>
+
+          {% endif %}
+
         </ul>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <ul class="pagination">
-          <form id="formRemove" method='POST' action='{% url 'expRemove' %}' enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="submit" id="btExcluir" class="btn btn-default btn-sm" value="Remove">
-          </form>
-        </ul>
-      </ul>
-    </nav>
+    </div>
 
-  </div>
-
-
-  {% else %}
-  <div id="colForm" class="col-sm-3 col-md-3"></div>
-  <div id="colForm" class="col-sm-6 col-md-6 text-center">
-    <hr>
-    <p1>You have no experiments.</p1>
-    <hr>
-  </div>
-  <div id="colForm" class="col-sm-3 col-md-3"></div>
-  {% endif %}
-</div>
+    <form id="formRemove" method='POST' action='{% url 'expRemove' %}' enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="submit" id="btExcluir" class="btn btn-default btn-sm" value="Remove">
+    </form>
 
 {% endblock %}

@@ -67,7 +67,7 @@ def experimentsRemove(request):
             ids = data.split(",")
             Execution.objects.filter(id__in=ids).delete()
 
-    return HttpResponseRedirect(reverse('home'))
+    return HttpResponseRedirect(reverse('experiments'))
 
 
 @csrf_exempt

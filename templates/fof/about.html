@@ -2,7 +2,35 @@
 
 {% block jumbotron %}
 <div class="jumbotron">
-  <h2>Friends-of-Friends</h2>
-  <p></p>
+  <h1><center>Friends-of-Friends</center></h1>
+
+    <div style="width:80%;" class="container">
+    <p>Friends-of-Friends (FoF) is an algorithm for astronomical objects classification to identify which objects are in gravitational interaction. For this, it uses data from cosmological simulations.</p>
+        <p>The classification is applied in data from N-body simulations considering an percolation radius defined by the user. The basic idea of this algorithm is: consider a sphere of radius R around each particle of a given set. If within that sphere exist other particles, they will be considered as belonging to the same halo and be called "friends". Then, we take a sphere around each friend and the procedure continues using the rule "any friend of my friend is my friend". The procedure stops when no new friend can be added to the group.</p>
+    </div>
+
+    <p><b>Available algorithms:</b></p>
+
+		<div id="postlist">
+			<div class="panel">
+
+                {% for alg in results %}
+                  <div class="panel-heading">
+                        <div class="text-center">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <h4 class="pull-left">{{ alg.nameFoF }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <p>{{ alg.descFoF }}</p>
+                        <a href="#"> Download {{ alg.commandFoF }}</a>
+                    </div>
+                {% endfor %}
+        </div>
+        </div>
 </div>
 {% endblock %}

@@ -8,7 +8,6 @@ from fof.forms import FoFForm
 from fof.models import FoFAlgorithm, UsuarioFriends
 from fof.tasks import RunExperiment, RunFoFSerial
 from resulttable.models import Execution
-from webfriends.views import home
 
 @csrf_protect
 def fof(request):
@@ -33,15 +32,10 @@ def fof(request):
 
         #pega o raio inserido:
         rperc = request.POST["Rperc"]
-        print("RAIO")
-        print(rperc)
-
         #pega o arquivo de entrada:
         if(request.FILES):
-            print("INPUT FILE")
             fileIn = request.FILES["Input"]
             execution.inputFile = fileIn
-            print(execution.inputFile)
             execution.save()
 
             queryInputFile = (
@@ -49,8 +43,6 @@ def fof(request):
                 execution.inputFile.name.replace('./', '/')
             ).replace(' ', '\ ')
 
-            print("Input após:")
-            print(execution.inputFile)
             queryOutputFile = queryInputFile
             queryOutputFile = queryOutputFile.replace('input', 'output')
 
@@ -61,21 +53,18 @@ def fof(request):
 
             query = alg.commandFoF + ' ' + queryInputFile + ' ' + rperc + ' > ' + queryOutputFile
 
-            print("Execute:")
+            print("Run:")
             print(query)
 
         else:
             query = execution.algorithm.command
 
-        outputFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/output'
-
-        #MUDAR PARA FAZER DOWNLOAD EM UMA PASTA ESPECIFICA
+        # outputFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/output'
         #dirpath = 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id)
-        dirpath = str(execution.id)
 
-        run = RunFoFSerial(alg.commandFoF, rperc, execution.id, dirpath)
+        run = RunFoFSerial(alg.commandFoF, rperc, execution.id, "fofexperiments/" + str(execution.id))
 
-        return HttpResponseRedirect(reverse('home'))
+        return HttpResponseRedirect(reverse('experiments'))
 
     form = FoFForm(request.POST or None)
     title = "Experiments %s" % (request.user)
@@ -87,4 +76,5 @@ def fof(request):
     return render(request, 'fof/FoF.html', context)
 
 def about(request):
-    return render(request, 'fof/about.html', {})
+    query_results = FoFAlgorithm.objects.all()
+    return render(request, 'fof/about.html', {"results" : query_results})

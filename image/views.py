@@ -63,7 +63,7 @@ def wavelet(request):
         
         run = WaveletExperiment.delay((wavelet, method), request.user.email, queryInputFile, outputFilePath, execution.id)
 
-        return HttpResponseRedirect(reverse('home'))
+        return HttpResponseRedirect(reverse('experiments'))
 
     form = WaveletForm(request.POST or None)
 
