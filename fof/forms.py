@@ -19,3 +19,4 @@ class FoFForm(forms.Form):
     Algorithm = forms.ModelChoiceField(label="Algorithm", required=True, queryset=FoFAlgorithm.objects.all(), empty_label= "---", initial=3)
     Input = forms.FileField(label="Input file", required=True, validators=[file_size])
     Rperc = forms.FloatField(label="Percolation radius", required=True)
+    #Numproc = forms.IntegerField(label="Number of processes", required=False)

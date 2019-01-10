@@ -18,7 +18,7 @@ def RunFoFSerial(self, command, rperc, ide, dirpath):
     os.system("wget http://127.0.0.1:8000/experiments/downloadInputFile?id=" + str(ide) + " -O " + dirpath + "/input")
     #Running FoF
     start = time.time()
-    os.system(commadirpath + "/input " + rperc + " > " + dirpath + "/output")
+    os.system(command + " " + dirpath + "/input " + rperc + " > " + dirpath + "/output")
     dur = time.time() - start
 
     path = str(dirpath + "/output")

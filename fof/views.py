@@ -22,6 +22,8 @@ def fof(request):
             return render(request, "fof/FoF.html", context)
 
         idAlg = request.POST.get('Algorithm')
+        processos = request.POST.get('processos')
+
         d_User = User.objects.get(username=request.user)
         alg = FoFAlgorithm.objects.get(idFoF=idAlg)
         execution = Execution(

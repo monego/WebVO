@@ -13,6 +13,20 @@
 
     <title>{% block head_title%}{%endblock%}</title>
     {% include 'head_css.html'%}
+
+    <script>
+      function test() {
+          if (document.getElementById('id_Algorithm').value == '2') {
+              document.getElementById('extra').style.display = 'block';
+          } else if (document.getElementById('id_Algorithm').value == '3'){
+              document.getElementById('extra').style.display = 'block';
+          }else {
+              document.getElementById('extra').style.display = 'none';
+          }
+      }
+     </script>
+
+
     </head>
 
   <body>

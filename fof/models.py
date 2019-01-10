@@ -9,6 +9,7 @@ class FoFAlgorithm(models.Model):
     descFoF = models.TextField(null=True, blank=False)
     commandFoF = models.TextField(null=False, blank=False)
 
+
     class Meta:
         managed = True
         db_table = 'fof_algorithm'

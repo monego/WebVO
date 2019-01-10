@@ -1,27 +1,64 @@
 {%extends "base.html" %}
+
+
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% crispy form %}
 
 {% block head_title%}Friends of Friends Algorithm{%endblock%}
 
+
 {% block content %}
+
 	{% if request.user.is_authenticated %}
 		<div id='row-form' class="row">
 			<div id="colForm" class="col-sm-3 col-md-3"></div>
 		  <div id="colForm" class="col-sm-6 col-md-6">
 				  <form id='form_exec' method='POST' action='{% url "fofapp:fof" %}' enctype="multipart/form-data">
 				{% csrf_token %}
-					{# <div id="formContent"> Necessario para nao bugar com erro de validacao do crispy #}
-						{{form|crispy}}    {# Crispy que falha nao retorna formulario com o csrf_token  #}
-					{# </div>				   Isso ocasionava um erro de acesso. (gambiarra no javascript) #}
+
+					  <div id="div_id_Algorithm" class="form-group"> <label for="id_Algorithm" class="col-form-label  requiredField">
+                		Algorithm<span class="asteriskField">*</span> </label>
+						  <div class="">
+						  <select name="Algorithm" class="select form-control" id="id_Algorithm" onclick='test()'>
+							  {% if Algorithm == None %}
+                                    <option selected="selected" value="0"></option>
+							  {% endif %}
+							  <option value="1" >FoF O(n²) Sequential</option>
+							  <option value="2">FoF O(n²) Parallel OpenMP</option>
+							  <option value="3">FoF O(n²) Parallel OpenACC</option>
+							  <option value="4">FoF O(nlogn) Sequential</option>
+						  </select>
+					  </div> </div>
+
+
+						<div class="form-group" id="extra">
+							<td><label for="idnumprocessos">Number of processes:</label></td>
+							<td><input name="processos" type="text" maxlength="20" id="idnumprocessos" class="form-control" value="{{processos}}"></td>
+						</div>
+
+
+
+					  <div id="div_id_Input" class="form-group"> <label for="id_Input" class="col-form-label  requiredField">
+                Input file<span class="asteriskField">*</span> </label> <div class=""> <input type="file" name="Input" class="clearablefileinput" required="" id="id_Input"> </div> </div>
+
+					  <div id="div_id_Rperc" class="form-group"> <label for="id_Rperc" class="col-form-label  requiredField">
+                Percolation radius<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="Rperc" step="any" class="numberinput form-control" required="" id="id_Rperc"> </div> </div
+
+
+					<!--{# <div id="formContent"> Necessario para nao bugar com erro de validacao do crispy #}-->
+						<!--{{form|crispy}}    {# Crispy que falha nao retorna formulario com o csrf_token  #}-->
+					<!--{# </div>				   Isso ocasionava um erro de acesso. (gambiarra no javascript) #}-->
+
+
 					<input id='execute' class='btn btn-primary'  type="submit" value="Run">
+
 				</form>
 		  	</div>
 		  	<div id="colForm" class="col-sm-3 col-md-3"></div>
 		</div>
 
 	{%else%}
-		Faça o login para prosseguir
+		Login to proceed.
 	{%endif%}
 {%endblock%}
