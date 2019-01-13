@@ -53,18 +53,12 @@ def fof(request):
             print("Query output file:")
             print(queryOutputFile)
 
-            query = alg.commandFoF + ' ' + queryInputFile + ' ' + rperc + ' > ' + queryOutputFile
-
-            print("Run:")
-            print(query)
+            outputFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/output'
 
         else:
             query = execution.algorithm.command
 
-        # outputFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/output'
-        #dirpath = 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id)
-
-        run = RunFoFSerial(alg.commandFoF, rperc, execution.id, "fofexperiments/" + str(execution.id))
+        run = RunFoFSerial(alg.commandFoF, rperc, execution.id, queryInputFile, outputFilePath, str(execution.id))
 
         return HttpResponseRedirect(reverse('experiments'))
 

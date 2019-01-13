@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView
+
 import fof
 import image
 import resulttable
@@ -25,9 +26,7 @@ urlpatterns = [
     path('about/', views.about, name="about"),
     path('', views.home, name="home"),
 
-    path('register/complete/',
-         TemplateView.as_view(template_name='registration/registration_complete.html'),
-         name='registration_complete'),
+    path('register/complete/', TemplateView.as_view(template_name='registration/registration_complete.html'), name='registration_complete'),
     path('register/closed/',
          TemplateView.as_view(template_name='registration/registration_closed.html'),
          name='registration_disallowed'),

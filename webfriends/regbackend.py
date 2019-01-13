@@ -2,7 +2,7 @@ from django.conf.urls import url
 from registration.backends.default.views import RegistrationView
 from webfriends.forms import UsuarioFriendsForm
 from webfriends.models import UsuarioFriends
-
+import os
 
 class MyRegistrationView(RegistrationView):
 
@@ -15,7 +15,9 @@ class MyRegistrationView(RegistrationView):
         user_profile.nickname = form_class.cleaned_data['nickname']
         user_profile.company = form_class.cleaned_data['company']
         user_profile.save()
+        os.mkdir('./users/user_' + str(user_profile.id))
         return user_profile
+
 
     def get_success_url(self, user):
         return '/register/complete/'

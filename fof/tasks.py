@@ -10,23 +10,20 @@ logger = get_task_logger(__name__)
 
 
 @task(bind=True, name="FoFSerial")
-def RunFoFSerial(self, command, rperc, ide, dirpath):
+def RunFoFSerial(self, command, rperc, ide, input, output, id):
 
-    print("\n Executando o exp %s, algoritmo: %s" % (ide, command))
-
-    os.system("mkdir " + dirpath)
-    os.system("wget http://127.0.0.1:8000/experiments/downloadInputFile?id=" + str(ide) + " -O " + dirpath + "/input")
+    print("\nExecutando o exp %s, algoritmo: %s" % (ide, command))
+    print(output)
     #Running FoF
     start = time.time()
-    os.system(command + " " + dirpath + "/input " + rperc + " > " + dirpath + "/output")
+    os.system(command + " " + input + " " + rperc + " > " + output)
     dur = time.time() - start
 
-    path = str(dirpath + "/output")
     exec = Execution.objects.get(pk=ide)
-    exec.outputFile = path
+    exec.outputFile = output
     exec.save()
 
-    files = {'file': open(path, 'rb')}
+    files = {'file': open(output, 'rb')}
     data = {'id': str(ide), 'time': dur}
 
     r = requests.post('http://127.0.0.1:8000/experiments/result', files=files, data=data)

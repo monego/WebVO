@@ -4,10 +4,13 @@ from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from resulttable.models import Execution
-from webfriends.forms import ContactForm
+from webfriends.forms import ContactForm, UsuarioFriendsForm
 from webfriends.models import UsuarioFriends
 from webfriends import settings
-
+from django.shortcuts import render
+from django.template.loader import render_to_string
+from django.contrib.auth import login
+import os
 
 def home(request):
     title = "Bem-vindo"
@@ -27,6 +30,7 @@ def table(request):
         user = User.objects.get(id=request.user.id)
         UserProf = UsuarioFriends(usuario=user)
         UserProf.save()
+        os.mkdir('./users/user_' + str(request.user.id))
     paginator = Paginator(executionList, UserProf.resultsPerPage)
     page = request.GET.get('page')
     if page is None:
