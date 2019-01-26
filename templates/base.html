@@ -1,5 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -18,10 +19,13 @@
       function test() {
           if (document.getElementById('id_Algorithm').value == '2') {
               document.getElementById('extra').style.display = 'block';
+              document.getElementById('extra2').style.display = 'none';
           } else if (document.getElementById('id_Algorithm').value == '3'){
               document.getElementById('extra').style.display = 'block';
+              document.getElementById('extra2').style.display = 'block';
           }else {
               document.getElementById('extra').style.display = 'none';
+              document.getElementById('extra2').style.display = 'none';
           }
       }
      </script>
@@ -30,7 +34,7 @@
     </head>
 
   <body>
-
+{% load staticfiles %}
     {% include 'navbar.html' %}
     <div style="margin-bottom:50px;padding-top:10px;" class="container">
 

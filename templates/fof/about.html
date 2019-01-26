@@ -1,12 +1,36 @@
+<!DOCTYPE html>
 {%extends "base.html" %}
-
+{% load static %}
 {% block jumbotron %}
 <div class="jumbotron">
   <h1><center>Friends-of-Friends</center></h1>
 
     <div style="width:80%;" class="container">
-    <p>Friends-of-Friends (FoF) is an algorithm for astronomical objects classification to identify which objects are in gravitational interaction. For this, it uses data from cosmological simulations.</p>
-        <p>The classification is applied in data from N-body simulations considering an percolation radius defined by the user. The basic idea of this algorithm is: consider a sphere of radius R around each particle of a given set. If within that sphere exist other particles, they will be considered as belonging to the same halo and be called "friends". Then, we take a sphere around each friend and the procedure continues using the rule "any friend of my friend is my friend". The procedure stops when no new friend can be added to the group.</p>
+    <p>Friends-of-Friends (FoF) is an algorithm used to identify structures in galaxy distribution based on physical proximity
+        [1]. It gets as input, data from N-body computer simulations in a 3-dimensional space [2]
+        used to identify halos and to identify structures in numerical simulations too [3].</p>
+    <p>
+        FoF is one of the most popular grouping percolation methods, specially because the other methods, as the Bayesian, for example,
+        are not publicly available and are more difficult to code. Besides, the FoF uses just a single free parameter defined by the
+        user, that determines the threshold of the linking length called percolation radius</p>
+
+     <p>
+        The basic idea of the algorithm is: consider a sphere of radius R around each particle of a given set. If within that sphere
+        exist other particles, they will be considered as belonging to the same halo and be called "friends". Then, we take a sphere
+        around each friend and the procedure continues using the rule "any friend of my friend is my friend". The procedure stops when
+        no new friend can be added to the group. The images below represents the FoF execution:</p>
+        <p>
+            <center>
+            <img src="{% static '/img/fof1.png' %}" alt="Italian Trulli" align="middle" width="50%"/>
+            <figcaption>Input particles position.</figcaption>
+            <img src="{% static 'img/fof2.png' %}" alt="Italian Trulli" align="middle" width="50%"/>
+            <figcaption>Considering a sphere of radius R around each particle.</figcaption>
+            <img src="{% static 'img/fof3.png' %}" alt="Italian Trulli" align="middle" width="50%"/>
+            <figcaption>Groups classified by their gravitational position.</figcaption>
+            </center>
+        </p>
+
+
     </div>
 
     <p><b>Available algorithms:</b></p>
@@ -32,5 +56,14 @@
                 {% endfor %}
         </div>
         </div>
+
+  <h3><center>References</center></h3>
+    <ol>
+      <li>HUCHRA, J. P., GELLER, M. J. Groups of Galaxies I. Nearby groups. 1982. In: The astrophysical, v. 257, p. 423 - 437.</li>
+      <li>DAVIS, M., Efstathiou, G., Frenk, C.S., White, S.D.M., 1985. The evolution of large scale structure in a universe dominated by cold dark matter. In: Astrophys. J. 292, 371–394. doi:10.1086/163168.</li>
+      <li>KNEBE, A. et al.; Haloes gone MAD: The Halo‐Finder Comparison Project. 2011. In: Monthly Notices of the Royal Astronomical Society. vol. 415(3), p. 2293-2318</li>
+      <li>DUARTE, M., Mamon, G. A. How well does the Friends-of-Friends algorithm recover group properties from galaxy catalogs limited in both distance and luminosity? 2014. In: Monthly Notices of the Royal Astronomical Society. 440(2). doi: 10.1093/mnras/stu378. </li>
+    </ol>
+
 </div>
 {% endblock %}
