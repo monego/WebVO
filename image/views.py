@@ -30,6 +30,7 @@ def wavelet(request):
         d_User = User.objects.get(username=request.user)
         wavelet = request.POST.get("Wavelet")
         method = request.POST.get("Method")
+        samount = request.POST.get("ShiftAmount")
 
         if method == 'visushrink':
             method = 'VisuShrink'
@@ -60,8 +61,8 @@ def wavelet(request):
             '/' + str(execution.id) + '/output.' + request.POST.get("Format")
 
         print(outputFilePath)
-        
-        run = WaveletExperiment.delay((wavelet, method), request.user.email, queryInputFile, outputFilePath, execution.id)
+
+        run = WaveletExperiment.delay((wavelet, method, samount), request.user.email, queryInputFile, outputFilePath, execution.id)
 
         return HttpResponseRedirect(reverse('experiments'))
 

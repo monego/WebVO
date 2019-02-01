@@ -16,8 +16,9 @@ def WaveletExperiment(self, request, user_email, inputfile, outputfilepath, ide)
     server_url = 'http://127.0.0.1:8000'
     print(outputfilepath)
     img_dejson = skio.imread(inputfile)
-    
-    d = skr.denoise_wavelet(img_dejson, wavelet=request[0], method=request[1])
+
+    func_kw = dict(wavelet=request[0], method=request[1])
+    d = skr.cycle_spin(img_dejson, func=skr.denoise_wavelet, max_shifts=int(request[2]), func_kw=func_kw)
 
     skio.imsave(outputfilepath, d)
     print(outputfilepath)
