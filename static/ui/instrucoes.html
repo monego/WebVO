@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" dir="ltr">
+<head>
+	<title>INPE/Modelo Padrão</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="/img/favicon.png" />
+
+	<link media="screen" href="/css/plone.css" type="text/css" rel="stylesheet" id="plone-css" />    
+	<link media="all" href="/css/main.css" type="text/css" rel="stylesheet" id="main-css" />  
+	<link media="all" href="/css/style.css" type="text/css" rel="stylesheet" id="style-css" />
+
+	<link media="all" href="/css/css-intranet-inpe.css" rel="stylesheet" id="intranet-css" /> 
+	<link media="all" href="/css/css-menu.css" rel="stylesheet" id="menu-css" />    
+
+	<!-- CONTRASTE -->
+	<link media="all" href="/css/css-intranet-inpe-contraste.css" rel="stylesheet" id="intranet-css-contraste" /> 
+	<link media="all" href="/css/css-menu-contraste.css" rel="stylesheet" id="menu-css-contraste" />   
+
+	<script src="/js/jquery/jquery-1.9.1.js" type="application/javascript"></script>  
+	<script src="/js/jquery/jquery.cookie.js" type="application/javascript"></script>  
+	<script src="/js/functions.js" type="application/javascript"></script>
+
+
+</head>
+
+<body>
+	<!-- TOPO -->    
+	<a accesskey="0" href="#content" title="Ir para conteúdo" class="acesso">Ir para conteúdo <span>0</span ></a>
+<noscript>
+Habilite o JavaScript do navegador para que o site funcione corretamente.
+</noscript>
+
+
+
+<!--ORIGINAL
+- quando a barra do governo sofrer alterações, deve-se entrar através de um navegador no link  abaixo (//barra.brasil.gov.br/barra.js) e copiar o código que aparece para o arquivo /include/barra_governo.js
+-->
+
+<div id="barra-brasil"> 
+	<ul id="menu-barra-temp">
+		<li><a href="http://brasil.gov.br">Portal do Governo Brasileiro</a></li> 
+		<li><a href="http://epwg.governoeletronico.gov.br/barra/atualize.html">Atualize sua Barra de Governo</a></li>
+	</ul>
+</div>
+<div class="fundo-topo" id="topo">
+	<div class="conteudo-topo">
+
+        <ul class="ir-para">
+            <li><a accesskey="1" href="#content" title="Ir para conteúdo">Ir para conteúdo <span>1</span ></a></li>
+            <li><a accesskey="2" href="#navigation" title="Ir para o menu">Ir para o menu <span>2</span></a></li>
+            <li><a accesskey="3" href="#busca" title="Ir para a busca">Ir para a busca <span>3</span></a></li>
+            <li><a accesskey="4" href="#rodape" title="Ir para o rodapé">Ir para o rodapé <span>4</span></a></li>
+        </ul>
+
+        <ul class="idioma">
+            <li><div id="google_translate_element"></div></li>
+        </ul>
+    
+        <ul class="acessibilidade" >
+            <li>
+            	<a href="/navegacao/acessibilidade.php" title="Acesse Acessibilidade">ACESSIBILIDADE</a>
+            </li>		
+            <li>
+            	<input type="checkbox" name="cont" id="contraste" checked="checked" />
+                <label for="contraste" class="contraste">ALTO CONTRASTE</label>                
+                <a class="contraste" id="contraste-link" title="Altere o Contraste">ALTO CONTRASTE</a>
+            </li>
+            <li>
+            	<a href="/navegacao/mapa-site.php" title="Acesse Mapa do Site">MAPA DO SITE</a>
+            </li>
+        </ul>
+    
+        <br />
+    
+        <div class="topo-logotipo">
+            <div>Instituto Nacional de Pesquisas Espaciais</div>
+            <a href="/" title="Ir para Home">
+                <img src="/img/logotipoInpe.png" alt="Logotipo do INPE">
+            </a>
+            <div class="ministerio">Ministério da Ciência, Tecnologia, Inovações e Comunicações</div>
+        </div>
+    
+        <br />
+    
+        <div class="topo-facilidades">    		
+        
+        <div id="portal-searchbox">
+            <form id="nolivesearchGadget_form" action="/busca.php" method="get">
+                <fieldset class="LSBox">                	
+                    <legend class="hiddenStructure">Buscar no Portal</legend>
+                    <label class="hiddenStructure" for="busca">Buscar no Portal</label>
+                    
+                    <input name="q" type="text" size="18" title="Buscar no portal" placeholder="Buscar no Portal" class="searchField" id="busca" value="" />
+                    <span class="buscaerror"></span>
+                    <input id="buscageral" class="searchButton" type="submit" value="Buscar no portal" alt="Buscar no Portal" />
+        
+                </fieldset>
+            </form>        
+        </div>
+        
+        	<div class="clear"><!-- --></div>
+            <ul>
+                <li><a href="http://www.facebook.com/pages/Instituto-Nacional-de-Pesquisas-Espaciais/124907444261208" title="Acesse Facebook" target="_blank"><img src="/img/facebookIcon.png" alt="Facebook"></a></li>
+                <li><a href="https://twitter.com/inpe_mct" title="Acesse Twitter" target="_blank"><img src="/img/twitterIcon.png" alt="Twitter"></a></li>
+                <li><a href="http://www.youtube.com/user/inpemct" title="Acesse Youtube" target="_blank"><img src="/img/youtubeIcon.png" alt="Youtube"></a></li>
+                <li><a href="/rss.php" title="Acesse RSS" target="_blank"><img src="/img/rssIcon.png" alt="RSS"></a></li>
+            </ul>
+        </div>
+        
+        <div class="clear"><!-- --></div>
+	
+	</div>
+
+</div>
+
+
+<div class="faixa-topo">	
+	<div class="conteudo-topo">
+        <ul>
+            <li><a href="/" title="Ir para Home"><img src="/img/logotipoInpe-menor.png" alt="Imagem do INPE" /><span class="none">INPE</span></a></li>  
+            <li><a href="/faq/" title="Acesse Perguntas Frequentes">Perguntas Frequentes</a></li>
+            <li><a href="/noticias/" title="Acesse Notícias">Notícias</a></li>
+            <li><a href="/dados_abertos/" title="Acesse os Dados Abertos">Dados Abertos</a></li>
+            <li><a href="/contato/" title="Acesse o Contato INPE">Contato</a></li>
+        </ul>
+        
+        <div class="clear"><!-- --></div>
+	</div>
+</div>
+
+<!-- VALIDACAO FORMULARIO -->
+
+<script>
+$("#nolivesearchGadget_form").submit(function( event ) {
+	if ($("#busca").val().length < 3){
+		$(".buscaerror").text( "3 caracteres!" ).show();
+		event.preventDefault();
+	} else {
+		$("#nolivesearchGadget_form").submit();
+	}
+});
+</script>
+<noscript>
+Habilite o JavaScript do navegador para que a busca no site funcione corretamente.
+</noscript>
+
+
+
+
+
+
+	<!-- CONTEUDO -->
+	<div id="main" role="main">
+		<div id="plone-content">
+
+			<div id="portal-columns" class="row">
+
+				<!-- RASTRO -->
+				<div id="viewlet-above-content">
+					<div id="portal-breadcrumbs">
+						<span id="breadcrumbs-you-are-here">
+							Você está aqui: 
+							<span>
+								<a href="/" title="Acesse INPE">INPE</a> / <a href="/modelo/index.php" title="Acesse ﻿Modelo Padrão">﻿Modelo Padrão</a> / 							</span>
+						</span>
+					</div>
+				</div>
+
+
+				<!-- Column 1 - MENU -->      
+				
+<div id="navigation">                                            
+    <div id="portal-column-one" class="cell width-1:4 position-0">      
+    
+	<ul class="menu-info">
+        <li><a href="http://www.inpe.br/acessoainformacao/" title="Saiba sobre o Acesso à Informação" target="_blank">Acesso à Informação</a></li>
+        <li class="center"><a href="/" title="Acesse INPE"><img class="inpe-menu" src="/img/logoinpe-azul-menor.png" alt="Imagem do INPE" /><span class="none">INPE</span></a></li>
+    </ul>
+    
+       
+    <input type="checkbox" id="menu-mobile" class="trigger" />              
+    <label for="menu-mobile">Menu <img src="/img/menu.png" alt="Menu" /><span class="clear"><!-- --></span></label>
+    
+    <ul class="cd-accordion-menu">
+  		<li>
+       	<input type="checkbox" id="1" />
+        <label for="1" title="Acesse os subitens de Modelo Padrão" class="titulo">Modelo Padrão</label>
+        
+        	<ul>
+                <li><a href="/modelo/" title="Acesse Sobre">Sobre</a></li>
+                <li><a href="/modelo/quem_somos.php" title="Acesse Quem Somos">Quem Somos</a></li>
+                <li><a href="/modelo/banner.php" title="Acesse Banner Rotativo">Banner Rotativo</a></li>
+                <li><a href="/modelo/dropdown.php" title="Acesse Drop Down">Drop Down</a></li>
+                <li><a href="/modelo/layouts.php" title="Acesse Tabelas, Caixas e Layouts">Tabelas, Caixas e Layouts</a></li>
+                <li><a href="/modelo/forms.php" title="Acesse Formulários">Formulários</a></li>
+                <li><a href="/modelo/instrucoes.php" title="Acesse Instruções">Instruções</a></li>
+                <li><a href="/modelo/icone.php" title="Acesse Ícone Diversidade">Ícone Diversidade</a></li>
+               	<li><a href="/modelo/arquivos/modelo_padrao_v2.zip" title="Acesse Download Modelo" target="_blank">Download <br />Modelo<img src="/img/externo.png" alt="Imagem Externo" class="right" /></a></li>
+                
+                <li><a href="/modelo/modelos.php" title="Acesse Coordenação / Centro / Laboratório">Modelos para Coordenação / Centro / Laboratório</a></li>
+                <li><a href="/modelo/modelo_para_eventos.php" title="Acesse Modelo para Eventos">Modelo para Eventos</a></li>
+                <li><a href="/modelo/contatos.php" title="Acesse Contatos">Contatos</a></li>
+                
+    		</ul>
+        </li>      
+        
+	</ul> 
+	</div>
+</div>    	
+
+				<!-- Conteudo -->
+				<div id="portal-column-content" class="cell width-3:4 position-1:4">
+
+					<div id="main-content">    
+						<div id="content">
+
+							<h1 class="documentFirstHeading">Modelo Padrão</h1>
+                            
+							<div class="documentByLine">
+								<span class="documentAuthor">Publicado Por: <a href="/" title="Acesse Publicado Por">INPE</a></span>
+								<br /><span class="documentModified"><span>Última Modificação: Jul 19, 2018 10h38</span></span>							</div>
+
+							<h2>Instruções</h2>
+                            
+                            <p>Para utilizar o Modelo Padrão  de acordo com as orientações do INPE + <a href="http://www.secom.gov.br/pdfs-da-area-de-orientacoes-gerais/internet-e-redes-sociais/diretrizes-comunicacao-digital-governo-federa-jan2014.pdf-1" target="_blank">Governo Federal</a>, foi disponibilizado um modelo de arquivos para utilização no ambiente dos Servidores WEB da COCTI.</p>
+                            <br />
+                            <h2>Configuração</h2>
+                            <p>O modelo foi estruturado para ser utilizado em Servidor Apache PHP e utiliza css, jquery e javascript para formatação do layout.</p>
+                            
+                            <p>Para que o modelo funcione em um Servidor próprio, é necessário utilizar a configuração acima e seguir os seguintes passos:</p>                            
+							
+                            <ol type="1">
+                            	<li>Realize o Download do Modelo através do link de menu <strong>"Download Modelo"</strong>;</li>
+                                <li>Descompacte o conteúdo do arquivo na raiz do Servidor;</li>
+                                <li>Acesse o seu servidor <strong>(http://servidor/)</strong> e verifique se o conteúdo é exibido igual ao link: <a href="http://portalnovo.sir.inpe.br/modelo/" target="_blank">http://portalnovo.sir.inpe.br/modelo/</a>;</li>
+                            </ol>
+                            
+                            <br /><br />
+                            <h2>Coordenação / Centro / Laboratórios</h2>
+                       	  <p>As seguintes alterações devem ser realizadas para a configuração do site.</p>                         
+							
+                            <ol type="1">
+                            	
+                                <li>Alterar os arquivos index.php, topo.php e menu.php para que  títulos indiquem o site correto.<br />
+                                  <br />
+                                
+	                                <strong>topo.php:</strong><br /><br />
+                               	  	<ul class="circle">
+                                    	
+                                     	<li><strong>&lt;img src=&quot;/img/logotipoInpe.png&quot; alt=&quot;Logotipo do INPE&quot;&gt;</strong> para:<br>
+           							  &lt;span class="portal-title"><strong>Nome</strong>&lt;/span></li>
+                                    </ul>
+                                	<br />
+                                    
+                                    <strong>menu.php:</strong> <br>
+Todos os itens de menu devem possuir caminho absoluto:<br />
+                                    <br />
+                               	  	<ul class="circle">
+                                    	<li>&lt;a href="<strong>/</strong>" title="Acesse Sobre"></li>
+                                     	
+                                    </ul>
+                                	<br />
+                                    
+                                	
+                                  	<strong>index.php:</strong><br /><br />
+                       	  	  	  <ul class="circle">
+                               	  	  <li>&lt;title>INPE/<strong>Modelo Padrão</strong>&lt;/title>                                        	  para: <br>
+                                       	    &lt;title>INPE/<strong>Nome</strong>&lt;/title></li>
+                                  </ul>
+                                	
+                              </li>
+                                
+                                <li>Para que o <strong>RASTRO</strong> funcione, é necessário acrescentar um arquivo <strong>!.txt </strong>dentro de cada pasta criada. O conteúdo desse arquivo deve conter o <strong>'nome da categoria do site' + 'ponto e vírgula' + 'página de link'</strong>. Ex: '<strong>Nome;index.php</strong>' ;</li>
+                                
+                                <li>Caso o modelo seja para uma subpasta, deve-se copiar os arquivos rodape.php, topo.php, index.php e menu.php para dentro da nova pasta referente ao site e utilizar o link absoluto para os includes que ficaram na raiz.</li>
+                              
+                            </ol>
+                           
+                            <br /><br />
+                            
+                            <h2>Serviços e Programas</h2>
+                       	  	<p>Além das alterações realizadas de acordo com o modelo de Coordenação / Centro / Laboratórios, as seguintes alterações devem ser realizadas para a mudança da cor do site e alteração do rodapé.</p>                         
+							
+                            <ol type="1">
+                            	
+                              <li>Alterar o arquivo index.php para a inclusão dos arquivos '.css'.<br />
+                                  <br />
+                                
+	                                <strong>&lt;link media="all" href="/css/css-servico-inpe.css" rel="stylesheet" /&gt;</strong> 
+                                    <br />
+                                    <br />
+                                  <strong>&lt;link media="all" href="/css/css-branco-inpe.css" rel="stylesheet" /&gt;</strong> 
+                               	</li>
+                           	</ol>
+                           
+                            <br /><br />
+                            
+                            <hr />
+                            <br />
+                          <p>
+                            <strong>Desenvolvido por <a href="/ti/" title="Acesse COCTI/INPE">COCTI/INPE</a></strong>
+                          </p>
+                            
+                            <p>
+                            Para maiores informações entre em contato através do <strong>Webmaster</strong> disponível em '<a href="contatos.php" title="Acesse Contatos">Contatos</a>'.
+                            </p>
+
+
+						</div>
+					</div>
+				</div>
+				<!-- Fim do Conteudo -->            
+
+
+				<div class="clear"><!-- --></div>
+				<div id="voltar-topo"><a href="#topo" title="Acesse Voltar para o topo">Voltar para o topo</a></div>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- FIM CONTEUDO -->
+
+	<div class="clear"><!-- --></div>
+
+	<!-- Footer -->
+	
+<div id="rodape" class="rodape-inpe">
+	<div class="conteudo-rodape">
+    	<ul>
+        	<li>
+            <span>Institucional</span>
+            	<ul>
+                	<li><a href="/institucional/pesquisa_desenvolvimento/" title="Acesse Pesquisa e Desenvolvimento">Pesquisa e Desenvolvimento</a></li>
+                    <li><a href="/institucional/sobre_inpe/organograma/" title="Acesse Organograma">Organograma</a></li>
+                    <li><a href="/institucional/quem_quem/colaboradores/" title="Acesse Colaboradores">Colaboradores</a></li>
+               	</ul>
+            </li>
+            
+            <li>
+            <span>Comunicação e Comunidade</span>
+                <ul>
+                    <li><a href="/noticias/" title="Acesse Notícias">Notícias</a></li>
+                    <li><a href="/comunicacao_comunidade/visitas/visitas_instalacoes.php" title="Acesse Visitas às Instalações">Visitas às Instalações</a></li>
+                </ul>
+            </li>
+
+            <li>
+            <span>Redes Sociais</span>
+                <ul>
+                    <li><a href="http://www.facebook.com/pages/Instituto-Nacional-de-Pesquisas-Espaciais/124907444261208" title="Acesse Facebook" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/inpe_mct" title="Acesse Twitter" target="_blank">Twitter</a></li>
+                    <li><a href="http://www.youtube.com/user/inpemct" title="Acesse YouTube" target="_blank">YouTube</a></li>
+                </ul>
+            </li>
+
+            <li>
+            <span>Navegação</span>
+                <ul>
+                    <li><a href="/navegacao/acessibilidade.php" title="Acesse Acessibilidade">Acessibilidade</a></li>
+                    <li>
+                        <input type="checkbox" name="cont" id="contrasteRodape" checked="checked" />
+                        <label for="contrasteRodape" class="contraste">ALTO CONTRASTE</label>                
+                        <a class="contraste" id="contraste-link-rodape" title="Altere o Contraste">Alto Contraste</a>
+                    </li>   
+					<li><a href="/navegacao/mapa-site.php" title="Acesse Mapa do Site">Mapa do Site</a></li>
+                </ul>
+            </li>
+
+            <li>
+            <span>Ensino e Documentação</span>
+                <ul>
+                    <li><a href="/pos_graduacao/" title="Acesse Pós-Graduação" target="_blank">Pós-Graduação</a></li>
+                    <li><a href="/biblioteca/" title="Acesse Biblioteca On-line" target="_blank">Biblioteca On-line</a></li>
+                </ul>
+            </li>
+
+            <li>
+            <span>Produtos e Serviços</span>
+                <ul>
+                    <li><a href="http://www.cptec.inpe.br/" title="Acesse CPTEC" target="_blank">Tempo e Clima</a></li>
+                    <li><a href="http://www.dgi.inpe.br" title="Acesse Catálogo de Imagens" target="_blank">Catálogo de Imagens</a></li>
+                    <li><a href="/queimadas/" title="Acesse Queimadas" target="_blank">Queimadas</a></li>
+                    <li><a href="/elat/" title="Acesse Raios" target="_blank">Raios</a></li>
+                    <li><a href="/climaespacial/" title="Acesse Clima Espacial" target="_blank">Clima Espacial</a></li>
+                </ul>
+            </li>
+            
+            
+            <li>
+            <span>RSS</span>
+            	<ul>
+                    <li><a href="/rss.php" title="Acesse Assine" target="_blank">Assine</a></li>
+               	</ul>
+            </li>
+            
+            
+       	</ul>
+
+        <div class="clear"><!-- --></div>
+        
+	</div>  
+</div>
+
+    
+	<input type="checkbox" name="cont" id="contrasteRodape" checked="checked" class="none" />
+    <label for="contrasteRodape" class="contraste none">ALTO CONTRASTE</label>                
+    <a class="contraste none" id="contraste-link-rodape" title="Altere o Contraste">Alto Contraste</a>
+    
+<div class="rodope-logo-governo" >    
+	<div class="conteudo-rodape">
+    	<ul>
+	    	<li><a href="http://www.acessoainformacao.gov.br/" title="Acesso à Informação" target="_blank"><img src="/img/acesso-a-infornacao.png" alt="Acesso à Informação"></a></li>
+	    	<li><a href="http://www.brasil.gov.br/" title="Portal Brasil" target="_blank"><img src="/img/brasil.png" alt="Portal Brasil"></a></li>
+    	</ul>
+        <div class="clear"><!-- --></div>
+  	</div>
+</div>
+
+<div class="assina-inpe" >
+	<div class="conteudo-rodape">2017 © INPE - Instituto Nacional de Pesquisas Espaciais
+    <span class="right">Desenvolvido por <a href="/ti/" title="Acesse COCTI/INPE" />COCTI/INPE</a></span></div></div>
+</div>	<!-- /Footer-->
+
+</body>  
+</html>

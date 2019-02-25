@@ -34,8 +34,19 @@
     </head>
 
   <body>
-{% load staticfiles %}
+   {% load staticfiles %}
     {% include 'navbar.html' %}
+
+      {% block messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissable"
+                 style="padding: 5px; width: 20%; float:right; text-align: center;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endblock messages %}
+
     <div style="margin-bottom:50px;padding-top:10px;" class="container">
 
         {% block jumbotron %}
@@ -44,6 +55,7 @@
         {% block content %}
         {% endblock %}
     </div>
+
 
     <div class="container-fluid">
       <div class="row">

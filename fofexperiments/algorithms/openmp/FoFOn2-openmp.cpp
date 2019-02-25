@@ -111,16 +111,17 @@ printf("%d \n", k);
 
 /********************escrevendo arquivo de saida ************************/
  
-  //char str1[10],str2[10];
+  char str1[10], str2[10], str3[10];
 
-  /*FILE *fp;
-  
+  FILE *fp;
   int num;
   char resultado;
-  num = sprintf(str2, "%.2lf", rperc);
+  int timestamp = sprintf(str3, "%lu" , (unsigned long)time(NULL));
+  //num = sprintf(str2, "%.2lf", rperc);
 
-  strcpy(str1, "Grupos_RP");
-  strcat(str1,str2);
+  strcpy(str1, "Groups_PR-");
+  //strcat(str1,str2);
+  strcat(str1,str3);
   
   fp = fopen(str1,"w");
 
@@ -130,7 +131,7 @@ printf("%d \n", k);
   fprintf(fp,"%4d % 10d %4d % 10.6e % 10.6e % 10.6e % 10.6e % 10.6e % 10.6e \n", i,iden[i],igru[i],x[i], y[i],z[i],
   v1[i], v2[i],v3[i]);
 
-  fclose (fp);*/
+  fclose (fp);
 
   /********* Calculando a quantidade de particulas por grupo ************/
   int nn, si, mult;

@@ -19,6 +19,7 @@
           <th>Time</th>
           <th>Input file</th>
           <th>Output file</th>
+          <th>Log file</th>
         </tr>
       </thead>
 
@@ -59,6 +60,13 @@
           <td>
             {% if exp.outputFile%}
             <a  href="{% url 'downloadOutputFile'%}?id={{exp.id}}"><button type="button" class="btn btn-success">Download</button></a>
+            {% else %}
+            <button type="button" class="btn btn-warning disabled">No results</button>
+            {% endif %}
+          </td>
+          <td>
+            {% if exp.outputFile%}
+            <a  href="{% url 'downloadLogFile'%}?id={{exp.id}}"><button type="button" class="btn btn-success">Download</button></a>
             {% else %}
             <button type="button" class="btn btn-warning disabled">No results</button>
             {% endif %}
@@ -104,7 +112,6 @@
 
           {% if data.has_next %}
           <li class="page-item"><a class="page-link" href="?page={{ data.next_page_number }}">Next</a></li>
-
           {% endif %}
 
         </ul>

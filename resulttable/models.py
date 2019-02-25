@@ -24,6 +24,7 @@ class Execution(models.Model):
     algorithm = models.TextField(null=True, blank=True)
     inputFile = models.FileField(upload_to=user_directory_path_in, null=True)
     outputFile = models.FileField(upload_to=user_directory_path_out, null=True)
+    logFile = models.FileField(upload_to=user_directory_path_out, null=True)
     time = models.FloatField(default=-1)
 
     class Meta:

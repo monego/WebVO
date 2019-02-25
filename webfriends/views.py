@@ -10,6 +10,8 @@ from webfriends import settings
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.contrib.auth import login
+from django.contrib import messages
+
 import os
 
 def home(request):
@@ -61,18 +63,22 @@ def about(request):
 def contact(request):
     form = ContactForm(request.POST or None)
     if form.is_valid():
-        print('hey3')
         subject = 'Portal Friends - Mensagem de %s ' % (
             form.cleaned_data.get("nome"))
-        from_email = settings.EMAIL_HOST_USER  # da pra usar outro?
-        to_email = from_email
+        from_email = settings.EMAIL_HOST_USER
+        #from_email = form.cleaned_data.get("email")
+        to_email = settings.EMAIL_HOST_USER
         message = form.cleaned_data.get("mensagem")
+        user = "\n\n\nSent by:" + form.cleaned_data.get("nome") + " - " + form.cleaned_data.get("email")
         send_mail(subject,
-                  message,
+                  message + user,
                   from_email,
                   [to_email],
                   fail_silently=False)
-    context = {
-        "form": form,
-    }
-    return render(request, "contact.html", context)
+        messages.success(request, 'Message sent successfully.')
+        return render(request, "welcome.html", {})
+    else:
+        context = {
+            "form": form,
+        }
+        return render(request, "contact.html", context)
