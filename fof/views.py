@@ -54,11 +54,12 @@ def fof(request):
             print(queryOutputFile)
 
             outputFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/output'
+            logFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/log'
 
         else:
             query = execution.algorithm.command
 
-        run = RunFoFSerial(alg.commandFoF, rperc, execution.id, queryInputFile, outputFilePath, str(execution.id))
+        run = RunFoFSerial(alg.commandFoF, rperc, execution.id, queryInputFile, outputFilePath, logFilePath, str(execution.id))
 
         return HttpResponseRedirect(reverse('experiments'))
 

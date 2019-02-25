@@ -19,6 +19,7 @@
           <th>Time</th>
           <th>Input file</th>
           <th>Output file</th>
+          <th>Log file</th>
         </tr>
       </thead>
 
@@ -61,6 +62,13 @@
             <a  href="{% url 'downloadOutputFile'%}?id={{exp.id}}"><button type="button" class="btn btn-success">Download</button></a>
             {% else %}
             <button type="button" class="btn btn-warning disabled">No results</button>
+            {% endif %}
+          </td>
+          <td>
+            {% if exp.logFile%}
+            <a  href="{% url 'downloadLogFile'%}?id={{exp.id}}"><button type="button" class="btn btn-success">Download</button></a>
+            {% else %}
+            <button type="button" class="btn btn-warning disabled">No log</button>
             {% endif %}
           </td>
         </tr>

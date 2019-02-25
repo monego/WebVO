@@ -37,6 +37,20 @@ def downloadOutputFile(request):
     # criar alerta
     return HttpResponseRedirect(reverse('home'))
 
+def downloadLogFile(request):
+    expId = request.GET.get('id')
+    execution = Execution.objects.get(pk=expId)
+    if (execution.request_by.usuario.id == request.user.id):
+        print((execution.logFile.url))
+        print("Autorizado")
+        response = HttpResponse(
+            execution.logFile, content_type='application/force-download')
+        response[
+            'Content-Disposition'] = 'attachment; filename="Log-Experimento-' + str(expId) + '.log"'
+        return response
+    print("Não autorizado")
+    # criar alerta
+    return HttpResponseRedirect(reverse('home'))
 
 @json_view
 @csrf_protect

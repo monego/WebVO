@@ -10,7 +10,7 @@ logger = get_task_logger(__name__)
 
 
 @task(bind=True, name="FoFSerial")
-def RunFoFSerial(self, command, rperc, ide, input, output, id):
+def RunFoFSerial(self, command, rperc, ide, input, output, logfile, id):
 
     print("\nExecutando o exp %s, algoritmo: %s" % (ide, command))
     print(output)
@@ -23,10 +23,16 @@ def RunFoFSerial(self, command, rperc, ide, input, output, id):
     exec.outputFile = output
     exec.save()
 
+    with open(logfile, 'w+'):
+        logfile.write("")
+
     files = {'file': open(output, 'rb')}
     data = {'id': str(ide), 'time': dur}
+    log = {'file': open(logfile, 'r')}
 
     r = requests.post('http://127.0.0.1:8000/experiments/result', files=files, data=data)
+
+    log = requests.post('http://127.0.0.1:8000/experiments/log', files=log)
 
     print(r.status_code, r.reason)
 
