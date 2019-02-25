@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3b1977d-3428-40dd-bbae-d27307b351ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fofdb.db" beforeDir="false" afterPath="$PROJECT_DIR$/fofdb.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/FoFOn2-openmp.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/FoFOn2-openmp.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/exec" beforeDir="false" afterPath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resulttable/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/resulttable/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resulttable/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/resulttable/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fof/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/fof/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fof/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fof/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/image/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/image/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resulttable/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/resulttable/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/ui/css/experiment.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/ui/css/footer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/wavelet.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/wavelet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webfriends/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/webfriends/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webfriends/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webfriends/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/webfriends/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="55">
-              <caret line="71" column="22" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
+              <caret line="71" selection-start-line="71" selection-end-line="72" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -64,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1035">
-              <caret line="69" column="22" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
+            <state relative-caret-position="1050">
+              <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -134,11 +126,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="252" />
-    <option name="y" value="276" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="234" />
+    <option name="y" value="88" />
     <option name="width" value="950" />
-    <option name="height" value="531" />
+    <option name="height" value="577" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -190,10 +182,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="252" y="276" width="950" height="531" extended-state="0" />
-    <editor active="true" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28694713" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20846395" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -204,7 +195,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3283582" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.48371336" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -506,8 +497,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="69" column="22" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
+        <state relative-caret-position="1050">
+          <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -535,7 +526,7 @@
     <entry file="file://$PROJECT_DIR$/webfriends/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
-          <caret line="71" column="22" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
+          <caret line="71" selection-start-line="71" selection-end-line="72" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

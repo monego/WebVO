@@ -60,9 +60,13 @@ def wavelet(request):
             str(execution.request_by.usuario.id) + \
             '/' + str(execution.id) + '/output.' + request.POST.get("Format")
 
+        logFilePath = settings.MEDIA_ROOT + 'users/user_' + \
+            str(execution.request_by.usuario.id) + \
+            '/' + str(execution.id) + ".log"
+
         print(outputFilePath)
 
-        run = WaveletExperiment.delay((wavelet, method, samount), request.user.email, queryInputFile, outputFilePath, execution.id)
+        run = WaveletExperiment.delay((wavelet, method, samount), request.user.email, queryInputFile, outputFilePath, logFilePath, execution.id)
 
         return HttpResponseRedirect(reverse('experiments'))
 
