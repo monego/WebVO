@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_protect
 from fof.forms import FoFForm
-from fof.models import FoFAlgorithm, UsuarioFriends
-from fof.tasks import RunExperiment, RunFoFSerial
+from fof.models import FoFAlgorithm
+from fof.tasks import RunFoFSerial
 from resulttable.models import Execution
 
 @csrf_protect
@@ -23,17 +23,18 @@ def fof(request):
 
         idAlg = request.POST.get('Algorithm')
         processos = request.POST.get('processos')
+        kernels = request.POST.get('kernels')
+        rperc = request.POST['Rperc']
 
-        d_User = User.objects.get(username=request.user)
+        usuario = User.objects.get(username=request.user)
         alg = FoFAlgorithm.objects.get(idFoF=idAlg)
+
         execution = Execution(
-            request_by=d_User.usuariofriends,
+            request_by=usuario.usuariofriends,
             algorithm = alg.nameFoF,
         )
         execution.save()
 
-        #pega o raio inserido:
-        rperc = request.POST["Rperc"]
         #pega o arquivo de entrada:
         if(request.FILES):
             fileIn = request.FILES["Input"]
@@ -48,18 +49,13 @@ def fof(request):
             queryOutputFile = queryInputFile
             queryOutputFile = queryOutputFile.replace('input', 'output')
 
-            print("Query input file:")
-            print(queryInputFile)
-            print("Query output file:")
-            print(queryOutputFile)
+            print("Query input file:" + queryInputFile)
+            print("Query output file:" + queryOutputFile)
 
-            outputFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/output'
-            logFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/log'
+            outputFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/output-'
+            logFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/log-'
 
-        else:
-            query = execution.algorithm.command
-
-        run = RunFoFSerial(alg.commandFoF, rperc, execution.id, queryInputFile, outputFilePath, logFilePath, str(execution.id))
+        run = RunFoFSerial(alg.commandFoF, rperc, processos, kernels, execution.id, queryInputFile, outputFilePath, logFilePath)
 
         return HttpResponseRedirect(reverse('experiments'))
 

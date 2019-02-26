@@ -1,5 +1,4 @@
 from resulttable.models import Execution
-from webfriends.models import UsuarioFriends
 from celery.utils.log import get_task_logger
 from celery.decorators import task
 import requests
@@ -10,29 +9,29 @@ logger = get_task_logger(__name__)
 
 
 @task(bind=True, name="FoFSerial")
-def RunFoFSerial(self, command, rperc, ide, input, output, logfile, id):
+def RunFoFSerial(self, command, rperc, processos, kernels, ide, input, output, logfile):
 
     print("\nExecutando o exp %s, algoritmo: %s" % (ide, command))
-    print(output)
-    #Running FoF
+
     start = time.time()
-    os.system(command + " " + input + " " + rperc + " > " + output)
+    #os.system(command + " " + str(ide) + " " + input + " " + rperc + " " + processos + " " + kernels + " > " + output)
+    os.system(command + " " + output + " " + str(ide) + " " + input + " " + rperc + " " + processos + " " + kernels + " > " + output)
     dur = time.time() - start
 
     exec = Execution.objects.get(pk=ide)
-    exec.outputFile = output
+    exec.logFile = output
     exec.save()
 
-    with open(logfile, 'w+'):
-        logfile.write("")
+    #with open(logfile, 'w+') as f:
+    #    f.write("")
 
     files = {'file': open(output, 'rb')}
     data = {'id': str(ide), 'time': dur}
-    log = {'file': open(logfile, 'r')}
+    #log = {'file': open(logfile, 'r')}
 
     r = requests.post('http://127.0.0.1:8000/experiments/result', files=files, data=data)
 
-    log = requests.post('http://127.0.0.1:8000/experiments/log', files=log)
+    #log = requests.post('http://127.0.0.1:8000/experiments/log', files=log)
 
     print(r.status_code, r.reason)
 

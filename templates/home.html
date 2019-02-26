@@ -65,17 +65,10 @@
             {% endif %}
           </td>
           <td>
-<<<<<<< HEAD
-            {% if exp.outputFile%}
-            <a  href="{% url 'downloadLogFile'%}?id={{exp.id}}"><button type="button" class="btn btn-success">Download</button></a>
+            {% if exp.logFile %}
+              <a  href="{% url 'downloadLogFile'%}?id={{exp.id}}"><button type="button" class="btn btn-success">Download</button></a>
             {% else %}
-            <button type="button" class="btn btn-warning disabled">No results</button>
-=======
-            {% if exp.logFile%}
-            <a  href="{% url 'downloadLogFile'%}?id={{exp.id}}"><button type="button" class="btn btn-success">Download</button></a>
-            {% else %}
-            <button type="button" class="btn btn-warning disabled">No log</button>
->>>>>>> 285c5e4b34556af5abb1da84f19c701128b69d17
+              <button type="button" class="btn btn-warning disabled">No log</button>
             {% endif %}
           </td>
         </tr>

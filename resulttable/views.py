@@ -39,7 +39,6 @@ def downloadOutputFile(request):
 
 def downloadLogFile(request):
     expId = request.GET.get('id')
-<<<<<<< HEAD
     log = Execution.objects.get(pk=expId)
     if (log.request_by.usuario.id == request.user.id):
         print((log.logFile))
@@ -50,20 +49,6 @@ def downloadLogFile(request):
             'Content-Disposition'] = 'attachment; filename="Logfile-Experiment-' + str(expId) + '"'
         return response
     print("Not authorized")
-=======
-    execution = Execution.objects.get(pk=expId)
-    if (execution.request_by.usuario.id == request.user.id):
-        print((execution.logFile.url))
-        print("Autorizado")
-        response = HttpResponse(
-            execution.logFile, content_type='application/force-download')
-        response[
-            'Content-Disposition'] = 'attachment; filename="Log-Experimento-' + str(expId) + '.log"'
-        return response
-    print("Não autorizado")
->>>>>>> 285c5e4b34556af5abb1da84f19c701128b69d17
-    # criar alerta
-    return HttpResponseRedirect(reverse('home'))
 
 @json_view
 @csrf_protect

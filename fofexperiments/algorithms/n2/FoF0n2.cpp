@@ -56,7 +56,7 @@ bool LeDados(char *filename){
 /**************************** Realiza o agrupamento ******************************/
 //---------------------------------------------------------------------------
 
-void Friends(float rperc){
+void Friends(float rperc, char* id, char* filepath){
 
   float dist;
   int i = 0;
@@ -90,21 +90,18 @@ for(i=0; i<N;i++)
 printf("%d - %d - %.2f %.2f %.2f\n", i, igru[i], x[i], y[i], z[i]);
 
 /********************escrevendo arquivo de saida ************************/
+  char str1[20],str2[10];
 
-  char str1[10],str2[10], str3[10];
-
-  /*FILE *file;
+  FILE *file;
   time_t timestamp;
   char resultado;
-  sprintf(str2, "%.2lf", rperc);
-  sprintf(str3, "%ld", time(&timestamp));
+  //sprintf(str3, "%ld", time(&timestamp));
 
-  strcpy(str1, "Grupos_RP");
-  strcat(str1, str2);
-  strcat(str1, "_");
-  strcat(str1, str3);
+  strcpy(str1, "Groups_");
+  strcat(str1, id);
+  strcat(filepath, str1);
 
-  file = fopen(str1,"w");
+  file = fopen(filepath,"w");
 
   fprintf(file, "%d %d \n", N, k);
 
@@ -112,7 +109,7 @@ printf("%d - %d - %.2f %.2f %.2f\n", i, igru[i], x[i], y[i], z[i]);
   fprintf(file,"%4d %4d % 10.6e % 10.6e % 10.6e % 10.6e % 10.6e % 10.6e \n", i,igru[i],x[i], y[i],z[i],
   v1[i], v2[i],v3[i]);
 
-  fclose (file);*/
+  fclose (file);
 
   printf("\nNumber of groups: ");
   printf("%d \n", k);
@@ -158,18 +155,21 @@ void LimpaMemoria(void){
 /***************************************************************************/
 //---------------------------------------------------------------------------
 main(int argc, char **argv){
-  float  local_v[100], rperc;
-  char *Arg1;
+
+  float local_v[100], rperc;
+  char *Arg1, *id, *filepath;
   long start_fof, stop_fof, start_read, stop_read;
 
-  if(argc != 3){
-    puts( "Por favor entre com o nome do arquivo de dados e o raio de percolação!" );
+  if(argc != 5){
+    puts( "Input: output filepath + execution_id + input filepath + percolation radius." );
     exit(1);
   }
 
   //Inicia o arquivo
-  Arg1 = argv[1];
-  rperc = atof(argv[2]);
+  filepath = argv[1];
+  id = argv[2];
+  Arg1 = argv[3];
+  rperc = atof(argv[4]);
 
   printf("Radius: %f\n", rperc);
   //Lê o arquivo de entrada e armazena os dados em vetores
@@ -178,12 +178,12 @@ main(int argc, char **argv){
   stop_read = getTime();
 
   start_fof = getTime();
-  Friends(rperc);
+  Friends(rperc, id, filepath);
   stop_fof = getTime();
 
   LimpaMemoria();
 
-  printf("Read time:	%ld(usec)\n", (long)(stop_read-start_read));
+  printf("Reading time:	%ld(usec)\n", (long)(stop_read-start_read));
   printf("FoF time:	%ld(usec)\n", (long)(stop_fof-start_fof));
 
   return 0;
