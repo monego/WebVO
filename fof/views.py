@@ -52,8 +52,8 @@ def fof(request):
             print("Query input file:" + queryInputFile)
             print("Query output file:" + queryOutputFile)
 
-            outputFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/output-'
-            logFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/log-'
+            outputFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/'
+            logFilePath = settings.MEDIA_ROOT + 'users/user_' + str(execution.request_by.usuario.id) + '/' + str(execution.id) + '/logfile'
 
         run = RunFoFSerial(alg.commandFoF, rperc, processos, kernels, execution.id, queryInputFile, outputFilePath, logFilePath)
 

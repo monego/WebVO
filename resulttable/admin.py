@@ -9,7 +9,8 @@ class ExecutionAdmin(admin.ModelAdmin):
                         'date_requisition',
                         'status',
                         'inputFile',
-                        'outputFile']
+                        'outputFile',
+                        'logFile']
 
 
 admin.site.register(Execution, ExecutionAdmin)

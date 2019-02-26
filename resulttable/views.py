@@ -39,12 +39,12 @@ def downloadOutputFile(request):
 
 def downloadLogFile(request):
     expId = request.GET.get('id')
-    log = Execution.objects.get(pk=expId)
-    if (log.request_by.usuario.id == request.user.id):
-        print((log.logFile))
+    execution = Execution.objects.get(pk=expId)
+    if (execution.request_by.usuario.id == request.user.id):
+        print((execution.logFile))
         print("Autorizado")
         response = HttpResponse(
-            log.outputFile, content_type='application/force-download')
+            execution.logFile, content_type='application/force-download')
         response[
             'Content-Disposition'] = 'attachment; filename="Logfile-Experiment-' + str(expId) + '"'
         return response

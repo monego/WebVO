@@ -14,59 +14,21 @@ def RunFoFSerial(self, command, rperc, processos, kernels, ide, input, output, l
     print("\nExecutando o exp %s, algoritmo: %s" % (ide, command))
 
     start = time.time()
-    #os.system(command + " " + str(ide) + " " + input + " " + rperc + " " + processos + " " + kernels + " > " + output)
-    os.system(command + " " + output + " " + str(ide) + " " + input + " " + rperc + " " + processos + " " + kernels + " > " + output)
+    os.system(command + " " + output + " " + str(ide) + " " + input + " " + rperc + " " + processos + " " + kernels + " > " + logfile)
     dur = time.time() - start
 
     exec = Execution.objects.get(pk=ide)
-    exec.logFile = output
+    exec.outputFile = output+"Groups_" + str(ide)
+    exec.logFile = logfile
+    exec.status = 3
     exec.save()
 
     #with open(logfile, 'w+') as f:
     #    f.write("")
 
-    files = {'file': open(output, 'rb')}
+    out = {'file': open(output+"Groups_"+str(ide), 'rb')}
     data = {'id': str(ide), 'time': dur}
-    #log = {'file': open(logfile, 'r')}
+    log = {'log': open(logfile, 'r')}
 
-    r = requests.post('http://127.0.0.1:8000/experiments/result', files=files, data=data)
-
-    #log = requests.post('http://127.0.0.1:8000/experiments/log', files=log)
-
-    print(r.status_code, r.reason)
-
-@task(name="RunExperiment")
-def RunExperiment(command, ide):
-    server_url = 'http://127.0.0.1:8000'
-
-    print("\nExecutando o experimento %s %s" % (command, ide))
-    os.system("mkdir " + str(ide))
-    os.system("wget " + server_url + "/experiments/downloadInputFile?id=" + str(ide) + " -O ./" + str(ide) + "/input")
-
-    start = time.time()
-    # os.system(execution + " " + str(ide) + "/input > " + str(ide) + "/output")
-    os.system(command + " > " + str(ide) + "/output")
-    dur = time.time() - start
-
-    print("Duração: " + dur)
-
-    files={'file': str("/"+str(ide) + "/output")}
-    path = str(str(ide)+"/output")
-    print(path)
-    files = {'file': open(path, 'rb')}
-    data = {'id':str(ide),'time':dur}
-    r = requests.post('http://127.0.0.1:8000/' + 'experiments/result', files=files, data=data)
-    print(r.status_code, r.reason)
-           # execution.status = 2
-           # execution.save()
-           # start = time.time()
-           # os.system(query)
-           # dur = time.time() - start
-           # print dur
-           # execution.status = 3
-           # user = execution.request_by
-           # user.notes.add(nota)
-           # user.save()
-           # execution.time = dur
-           # execution.outputFile = queryOutputFile
-           # execution.save()
+    requests.post('http://127.0.0.1:8000/experiments/result', files=out, data=data)
+    requests.post('http://127.0.0.1:8000/experiments/log', files=log)
