@@ -13,6 +13,7 @@
 //#define BUFFSIZE 900000
 
 main(int argc, char* argv[]){
+
   float *local_x, *local_y, *local_z, *x1, *y1, *z1, *v1, *v2, *v3;
   double startwtime = 0.0, endwtime;
   int *iden, *local_id, *igru;
@@ -24,9 +25,9 @@ main(int argc, char* argv[]){
   igru = calloc(NMax,sizeof(int));
 
   if(local_x == NULL || local_y == NULL || local_z == NULL){
-    printf("Nao foi possivel alocar memoria.\n");
+    printf("Could not allocate memory.\n");
     exit(1);
-    }
+  }
 
   x1 = calloc(NMax,sizeof(float));
   y1 = calloc(NMax,sizeof(float));
@@ -37,7 +38,7 @@ main(int argc, char* argv[]){
   iden = calloc(NMax,sizeof(int));
 
   if(x1 == NULL || y1 == NULL || z1 == NULL || v1 == NULL || v2 == NULL || v3 == NULL ||iden == NULL){
-    printf("Nao foi possivel alocar memoria.\n");
+    printf("Could not allocate memory.\n");
     exit(1);
   }
 
@@ -46,6 +47,7 @@ main(int argc, char* argv[]){
   int    elem;  /* = n/p */
   int    P; // numero de processadores
   int    my_rank; // identificação do processador
+  char *id, *outputfp;
 
   int aLinhas[MAX_HOST]; // Vetor com o numero de linhas que serão processadas por cada processador
   int aLinhasDisp[MAX_HOST];  // Vetor com a linha inicial que será processada por cada processador
@@ -53,15 +55,18 @@ main(int argc, char* argv[]){
   int numlinhas, linhainicial, resto, processador;
   MPI_Status status;
   void Friends(float rperc, float x[], float y[], float z[], int n1, int my_rank);
-  void TrInterface(float rperc, float x[], float y[], float z[], float v1[], float v2[], float v3[], int iden[], int igru[],int qtp[], int LF[], int N, int P, int Tgr);
+  void TrInterface(float rperc, float x[], float y[], float z[], float v1[], float v2[], float v3[], int iden[], int igru[],int qtp[], int LF[], int N, int P, int Tgr, char* outputfp, char* id);
 
-  if(argc != 3 ){
-    puts( "Por favor entre com o nome do arquivo de dados e o raio! ");
+  if(argc != 5 ){
+    puts("Input: output filepath + execution_id + input filepath + percolation radius.");
     getchar();
     exit(1);
   }
 
-  rperc = atof(argv[2]);
+  outputfp = argv[1];
+  id = argv[2];
+  rperc = atof(argv[4]);
+
   /*******Inicializando a MPI ********/
   MPI_Init(&argc, &argv);
   MPI_Comm_size(MPI_COMM_WORLD, &P);
@@ -81,7 +86,7 @@ main(int argc, char* argv[]){
     int i;
     float m, tp, p1;
     FILE  *fp;
-    fp = fopen(argv[1],"r");
+    fp = fopen(argv[3],"r");
     fscanf (fp, "%d", &N);
     int auxvariable = 1;
 
@@ -142,7 +147,7 @@ main(int argc, char* argv[]){
     temp2 = calloc(N,sizeof(int));
     qtp = calloc(N,sizeof(int));
     if(temp == NULL || temp2 == NULL || qtp == NULL){
-      printf("Não foi possível alocar memória.\n");
+      printf("Could not allocate memory.\n");
       exit(1);
     }
 
@@ -162,11 +167,12 @@ main(int argc, char* argv[]){
 
       printf("\nNumber of groups: %d final line: %d my_rank: %d \n", temp1, maxL, ind_proc);
       printf("Particles per group:\n(group - particle)\n");
-      for (i = 1 ; i < temp1; i++){
-        ii++;
-        qtp[ii] = temp2[i];
-        printf("%d - %d \n", i, temp2[i]);
-      }
+      //Imprime partículas e grupos
+      // for (i = 1 ; i < temp1; i++){
+      //   ii++;
+      //   qtp[ii] = temp2[i];
+      //   printf("%d - %d \n", i, temp2[i]);
+      // }
 
       temp1 = temp1 -1;
       max[ind_proc] = temp1;
@@ -199,7 +205,7 @@ main(int argc, char* argv[]){
 
     double T_init = 0, T_final;
     T_init = MPI_Wtime();
-    TrInterface(rperc, x1, y1, z1, v1, v2, v3, iden, igru, qtp, LF, N, P, Tgr);
+    TrInterface(rperc, x1, y1, z1, v1, v2, v3, iden, igru, qtp, LF, N, P, Tgr, outputfp, id);
     //IDEN: vetor identificador das partículas
     //IGRU: vetor com número de grupos
     //QTP: vetor com quantidade de particulas por grupo ?
@@ -234,18 +240,18 @@ main(int argc, char* argv[]){
   free (local_z);
   free (igru);
 
-  
+
 //---------------------------------------------------------------------------
 }  /* main */
 
 //PÓS PROCESSAMENTO
 /*****************************************************************/
-void TrInterface(float rperc, float x[], float y[], float z[], float v1[], float v2[], float v3[], int iden[], int igru[],int qtp[], int LF[], int N, int P, int Tgr){
+void TrInterface(float rperc, float x[], float y[], float z[], float v1[], float v2[], float v3[], int iden[], int igru[],int qtp[], int LF[], int N, int P, int Tgr, char* outputfp, char*id){
   int *aux, *t1;
   aux = calloc(P,sizeof(int)); //aux tamanho do número de processadores P
   t1 = calloc(N,sizeof(int)); //aux tamanho do número de partículas N
   if(aux == NULL || t1 == NULL){
-      printf("Nao foi possivel alocar memoria.\n");
+      printf("Could not allocate memory.\n");
       exit(1);
   }
   float lim_i, lim_s, dist;
@@ -297,13 +303,14 @@ void TrInterface(float rperc, float x[], float y[], float z[], float v1[], float
 /********************************************************************************/
   char str1[10],str2[10];
   FILE *fp;
-  int num = sprintf(str2, "%d", P);
+  //int num = sprintf(str2, "%d", P);
   char resultado;
 
-  strcpy(str1, "GrupoNp");
-  strcat(str1,str2);
-  fp = fopen(str1,"w");
-  //fprintf(fp, "%d  %d \n", N, (Tgr));
+  strcpy(str1, "Groups_");
+  strcat(str1,id);
+  strcat(outputfp, str1);
+
+  fp = fopen(outputfp,"w");
 
   int *t5;
   t5 = calloc((Tgr),sizeof(int));
@@ -318,19 +325,19 @@ void TrInterface(float rperc, float x[], float y[], float z[], float v1[], float
   printf("Groups with mass higher than 1: %d\n", t2);
 
 /********************escrevendo arquivo de saida ************************/
-/*FILE *fp1;
-fp1 = fopen("GruposCSel.txt","w");
-fprintf(fp1, "%d  %d \n", N, t2);
-fprintf(fp, "%d  %d \n", N, Tgr);
-int ii;
-  for (ii = 0 ; ii < t2 ; ii++)
-    fprintf(fp1,"%d \n",t5[ii] );
+// FILE *fp1;
+// fp1 = fopen("GruposCSel.txt","w");
+// fprintf(fp, "%d  %d \n", N, t2);
+ fprintf(fp, "%d  %d \n", N, Tgr);
+ int ii;
+  // for (ii = 0 ; ii < t2 ; ii++)
+  //   fprintf(fp1,"%d \n",t5[ii] );
 
   for (ii = 0 ; ii < N ; ii++)
   fprintf(fp,"%d %d %d % 10.6e % 10.6e % 10.6e % 10.6e % 10.6e % 10.6e \n", ii,iden[ii],igru[ii],x[ii], y[ii],z[ii], v1[ii], v2[ii],v3[ii]);
 
   fclose (fp);
-  fclose (fp1);*/
+  // fclose (fp1);
 }
 
 //****************************************************************************/
@@ -342,7 +349,7 @@ void Friends(float rperc, float x[], float y[], float z[], int n1, int my_rank){
   Ngr = calloc((n1),sizeof(int));
     if(igru == NULL || Ngr == NULL)
       {
-      printf("Nao foi possivel alocar memoria.\n");
+      printf("Could not allocate memory.\n");
       exit(1);
       }
 

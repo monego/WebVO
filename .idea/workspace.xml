@@ -3,12 +3,38 @@
   <component name="ChangeListManager">
     <list default="true" id="b3b1977d-3428-40dd-bbae-d27307b351ce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fof/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/fof/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fof/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fof/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fofdb.db" beforeDir="false" afterPath="$PROJECT_DIR$/fofdb.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resulttable/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/resulttable/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resulttable/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/resulttable/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resulttable/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/resulttable/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Groups_PR1.20_111" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Groups_PR12.00_112" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Groups_PR12.00_113" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Groups_PR12.00_114" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Groups_PR12.00_115" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Groups_PR12.00_116" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Groups_PR12.00_117" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Groups_PR12.00_118" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Groups_PR12.00_roups_PR" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grupos_RP12.001551131367" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/mpi/FoFmpi.c" beforeDir="false" afterPath="$PROJECT_DIR$/fofexperiments/algorithms/mpi/FoFmpi.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/mpi/GrupoNp1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/mpi/GruposCSel.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/mpi/exec" beforeDir="false" afterPath="$PROJECT_DIR$/fofexperiments/algorithms/mpi/exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/mpi/run" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/mpi/teste" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/n2/10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/n2/Groups" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/n2/Groups10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/n2/Groups_10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/n2/Groups_PR1.70_roups_PR" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/n2/Groups_PR_roups_PR_" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/n2Groups_PR1.70_roups_PR1.70_" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/n2Groups_PR_roups_PR_" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/FoFOn2-openmp.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/FoFOn2-openmp.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/FoFOn2-openmp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/Grupos_RP1.00" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/Grupos_RP1.70" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/Grupos_RP1.701551099891" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/Grupos_RP10.00" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/exec" beforeDir="false" afterPath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fofexperiments/algorithms/openmp/teste" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resulttable/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="240">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -35,11 +61,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fof/tasks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+            <state relative-caret-position="204">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -50,7 +76,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resulttable/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="105">
               <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -59,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resulttable/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="41" column="47" lean-forward="true" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+            <state relative-caret-position="480">
+              <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -71,7 +97,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resulttable/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="165">
               <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -94,7 +120,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fof/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
+            <state relative-caret-position="675">
               <caret line="54" column="134" selection-start-line="54" selection-start-column="134" selection-end-line="54" selection-end-column="134" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -142,14 +168,14 @@
         <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/image/views.py" />
         <option value="$PROJECT_DIR$/fof/views.py" />
-        <option value="$PROJECT_DIR$/fof/tasks.py" />
         <option value="$PROJECT_DIR$/resulttable/admin.py" />
         <option value="$PROJECT_DIR$/resulttable/models.py" />
         <option value="$PROJECT_DIR$/resulttable/views.py" />
+        <option value="$PROJECT_DIR$/fof/tasks.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="67" />
     <option name="y" value="25" />
     <option name="width" value="1299" />
@@ -160,7 +186,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -198,6 +223,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="RunDashboard">
@@ -229,7 +255,7 @@
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15673982" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15673982" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -240,7 +266,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2198697" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2198697" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -541,49 +567,10 @@
     <entry file="file://$PROJECT_DIR$/fof/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/fof/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fof/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="54" column="134" selection-start-line="54" selection-start-column="134" selection-end-line="54" selection-end-column="134" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fof/tasks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resulttable/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resulttable/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="240">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -595,7 +582,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resulttable/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="105">
           <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -605,8 +592,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resulttable/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="41" column="47" lean-forward="true" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+        <state relative-caret-position="480">
+          <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resulttable/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fof/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fof/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="54" column="134" selection-start-line="54" selection-start-column="134" selection-end-line="54" selection-end-column="134" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fof/tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
