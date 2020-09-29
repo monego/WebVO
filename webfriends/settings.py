@@ -3,23 +3,21 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*w@9e5=q7leo^uw@d51l-!5h*!545&7xn_6#6@3yb61j^p!h&p'
+# Generate a new unique key with e.g. https://djecrety.ir/ before running
+# in production.
+SECRET_KEY = 'u@q9mhgefw6c8ks#u$jv9%1f*z3fa)_%h0b%r#0$dk$c4o^6pt'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-# email configuracao
+# Email configuration
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 ALLOWED_HOSTS = []
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'anawebfof@gmail.com'
-SERVER_EMAIL = 'anawebfof@gmail.com'
-DEFAULT_FROM_EMAIL = 'anawebfof@gmail.com'
-EMAIL_HOST_PASSWORD = 'viwovton'
+EMAIL_HOST = 'smtp.mymeail.tld'
+EMAIL_HOST_USER = 'myemail@mydomain.tld'
+SERVER_EMAIL = 'myemail@mydomain.tld'
+DEFAULT_FROM_EMAIL = 'myemail@mydomain.tld'
+EMAIL_HOST_PASSWORD = 'mypassword'
 EMAIL_PORT = 587
 
 #EMAIL_HOST = 'smtp.sendgrid.net'
@@ -84,7 +82,7 @@ DATABASES = {
 }
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
+# https://docs.djangoproject.com/en/2.2/topics/i18n/
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
@@ -92,7 +90,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
 
