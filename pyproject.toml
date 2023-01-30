@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "WebVO"
+version = "0.1.0"
+description = "Virtual Observatory"
+authors = ["Vinicius Monego <monego@posteo.net>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+celery = "^4"
+django = "^2"
+django-registration-redux = "^2.11"
+django-crispy-forms = "^1.14.0"
+django-jsonview = "^2.0.0"
+requests = "sc"
+scikit-image = "^0.19.3"
+simplejson = "^3.18.1"
+python-decouple = "^3.7"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
