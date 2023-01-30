@@ -14,7 +14,18 @@ Original application developed by Otávio Madalosso: https://github.com/Madaloss
 1. Install [Poetry](https://python-poetry.org/).
 2. In the root directory of this repository, install the requirements with `$ poetry install`.
 3. Install redis-server (e.g. `# apt install redis-server`)
-4. Start the applications:
+4. Create a `.env` file in the top level of this repository containing data for the following variables:
+
+```
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+SERVER_EMAIL = ''
+DEFAULT_FROM_EMAIL = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+```
+
+5. Start the applications:
 
 ``` bash 
 $ redis-server # Start the Redis server
@@ -23,5 +34,3 @@ $ poetry run celery -A webfriends worker --loglevel=DEBUG # Start the Celery wor
 ```
 
 Finally, open http://localhost:8000 in a graphical web browser.
-
-- **Attention!** Changes are needed in settings, experiments and tasks files.

@@ -3,3 +3,4 @@ fof/__pycache__/*
 image/__pycache__/*
 resulttable/__pycache__/*
 webfriends/__pycache__/*
+/.env

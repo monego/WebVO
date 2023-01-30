@@ -1,4 +1,5 @@
 import os
+from decouple import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -7,18 +8,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Generate a new unique key with e.g. https://djecrety.ir/ before running
 # in production.
-SECRET_KEY = 'u@q9mhgefw6c8ks#u$jv9%1f*z3fa)_%h0b%r#0$dk$c4o^6pt'
+SECRET_KEY = config("SECRET_KEY")
 
 # Email configuration
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 ALLOWED_HOSTS = []
-EMAIL_HOST = 'smtp.mymeail.tld'
-EMAIL_HOST_USER = 'myemail@mydomain.tld'
-SERVER_EMAIL = 'myemail@mydomain.tld'
-DEFAULT_FROM_EMAIL = 'myemail@mydomain.tld'
-EMAIL_HOST_PASSWORD = 'mypassword'
-EMAIL_PORT = 587
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+SERVER_EMAIL = config("SERVER_EMAIL")
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = config("EMAIL_PORT")
 
 #EMAIL_HOST = 'smtp.sendgrid.net'
 #EMAIL_HOST_USER = os.environ['SENDGRID_USER']
